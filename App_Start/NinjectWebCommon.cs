@@ -2,6 +2,8 @@ using System;
 using System.Web;
 using System.Web.Http;
 using CTWebAPI.App_Start;
+using CTWebAPI.Repository;
+using CTWebAPI.Repository.Interfaces;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
@@ -63,7 +65,7 @@ namespace CTWebAPI.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
-            //kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<IUserRepository>().To<UserRepository>();
         }
     }
 }

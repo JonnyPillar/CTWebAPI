@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using CTWebAPI.Repository.Interfaces;
 
-namespace CTWebAPI.Repository
+namespace CTWebAPI.Repository.DataLayer
 {
     public class EntityFrameworkRepository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity : class
     {
@@ -31,12 +32,18 @@ namespace CTWebAPI.Repository
             DbContext.Set<TEntity>().Add(entity);
         }
 
-        public IEnumerable<TEntity> RetreiveAll()
+        public IEnumerable<TEntity> GetRange(int quanity)
+        {
+            IQueryable<TEntity> temp = _dbContext.Set<TEntity>();
+            return temp.Take(quanity);
+        }
+
+        public IEnumerable<TEntity> GetAll()
         {
             return _dbContext.Set<TEntity>();
         }
 
-        public TEntity Retreive(TKey id)
+        public TEntity Get(TKey id)
         {
             return _dbContext.Set<TEntity>().Find(id);
         }

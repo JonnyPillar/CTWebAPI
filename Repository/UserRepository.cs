@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CTWebAPI.Models;
+using CTWebAPI.Repository.DataLayer;
 using CTWebAPI.Repository.Interfaces;
 
 namespace CTWebAPI.Repository

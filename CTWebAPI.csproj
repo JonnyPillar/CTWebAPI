@@ -179,8 +179,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,13 +229,6 @@
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PartialModels\User.cs" />
-    <Compile Include="Models\Repository\EntityFrameworkRepository.cs" />
-    <Compile Include="Models\Repository\IRepository.cs" />
-    <Compile Include="Models\Repository\IUserRepository.cs" />
-    <Compile Include="Models\Repository\UserRepository.cs" />
-    <Compile Include="Models\UnitOfWork\EFUnitofWork.cs" />
-    <Compile Include="Models\UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="Models\UnitOfWork\PagedResult.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>

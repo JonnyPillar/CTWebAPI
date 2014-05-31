@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Web.Http;
+using System.Web.Http.Results;
 using CTWebAPI.Controllers;
 using CTWebAPI.Models;
 using CTWebAPI.Repository.Interfaces;
@@ -15,14 +15,24 @@ namespace CTWebAPI.Tests
     public class UserControllerTests
     {
         private IEnumerable<User> _fakeUsers;
-        private Mock<IUserRepository> _userRepository;
         private UserController _userController;
+        private Mock<IUserRepository> _userRepository;
 
         [TestInitialize]
         public void SetUp()
         {
             _fakeUsers = GetUsers();
-            
+        }
+
+        [TestMethod]
+        public void UserController_Get_ReturnsAllUsers()
+        {
+            _userRepository = new Mock<IUserRepository>();
+            _userRepository.Setup(x => x.Get()).Returns(_fakeUsers);
+            var userController = new UserController(_userRepository.Object);
+
+            IEnumerable<User> users = userController.Get();
+            Assert.AreSame(_fakeUsers, users);
         }
 
         [TestMethod]
@@ -41,21 +51,24 @@ namespace CTWebAPI.Tests
             _userRepository.Setup(x => x.Get(2)).Returns(expectedUser);
             _userController = new UserController(_userRepository.Object);
 
-            User returnedUser = _userController.Get(2);
+            IHttpActionResult actionResult = _userController.Get(2);
+            var user = actionResult as OkNegotiatedContentResult<User>;
 
-            Assert.AreSame(expectedUser, returnedUser);
+            Assert.IsNotNull(user);
+            Assert.AreSame(expectedUser, user.Content);
         }
 
-        [TestMethod, ExpectedException(typeof(HttpResponseException))]
+        [TestMethod]
         public void UserController_Get_ReturnsNotFound()
         {
             _userRepository = new Mock<IUserRepository>();
             _userController = new UserController(_userRepository.Object);
-            _userController.Get(2);
+            IHttpActionResult actionResult = _userController.Get(2);
+            Assert.IsInstanceOfType(actionResult, typeof (NotFoundResult));
         }
 
         [TestMethod]
-        public void UserController_Get_ReturnsAllUsers()
+        public void UserController_GetRange_ReturnsUsersInRange()
         {
             _userRepository = new Mock<IUserRepository>();
             _userRepository.Setup(x => x.GetRange(5)).Returns(_fakeUsers);

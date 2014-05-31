@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
 using CTWebAPI.Models;
 using CTWebAPI.Repository.Interfaces;
 
@@ -19,10 +16,9 @@ namespace CTWebAPI.Controllers
 
         public IEnumerable<User> Get()
         {
-            return _userRepository.GetRange(100);
+            return _userRepository.Get();
         }
 
-        [ResponseType(typeof(User))]
         public IHttpActionResult Get(int id)
         {
             User user = _userRepository.Get(id);

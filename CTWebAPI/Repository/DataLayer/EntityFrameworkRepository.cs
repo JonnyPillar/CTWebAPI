@@ -39,7 +39,7 @@ namespace CTWebAPI.Repository.DataLayer
             return temp.Take(quanity);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> Get()
         {
             return _dbContext.Set<TEntity>();
         }

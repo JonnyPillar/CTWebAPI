@@ -6,31 +6,34 @@ using Ninject.Activation;
 using Ninject.Parameters;
 using Ninject.Syntax;
 
-public class NinjectScope : IDependencyScope
+namespace CTWebAPI.Ninject
 {
-    protected IResolutionRoot resolutionRoot;
-
-    public NinjectScope(IResolutionRoot kernel)
+    public class NinjectScope : IDependencyScope
     {
-        resolutionRoot = kernel;
-    }
+        protected IResolutionRoot resolutionRoot;
 
-    public object GetService(Type serviceType)
-    {
-        IRequest request = resolutionRoot.CreateRequest(serviceType, null, new Parameter[0], true, true);
-        return resolutionRoot.Resolve(request).SingleOrDefault();
-    }
+        public NinjectScope(IResolutionRoot kernel)
+        {
+            resolutionRoot = kernel;
+        }
 
-    public IEnumerable<object> GetServices(Type serviceType)
-    {
-        IRequest request = resolutionRoot.CreateRequest(serviceType, null, new Parameter[0], true, true);
-        return resolutionRoot.Resolve(request).ToList();
-    }
+        public object GetService(Type serviceType)
+        {
+            IRequest request = resolutionRoot.CreateRequest(serviceType, null, new Parameter[0], true, true);
+            return resolutionRoot.Resolve(request).SingleOrDefault();
+        }
 
-    public void Dispose()
-    {
-        var disposable = (IDisposable) resolutionRoot;
-        if (disposable != null) disposable.Dispose();
-        resolutionRoot = null;
+        public IEnumerable<object> GetServices(Type serviceType)
+        {
+            IRequest request = resolutionRoot.CreateRequest(serviceType, null, new Parameter[0], true, true);
+            return resolutionRoot.Resolve(request).ToList();
+        }
+
+        public void Dispose()
+        {
+            var disposable = (IDisposable) resolutionRoot;
+            if (disposable != null) disposable.Dispose();
+            resolutionRoot = null;
+        }
     }
 }

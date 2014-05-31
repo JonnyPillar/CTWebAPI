@@ -2,6 +2,7 @@ using System;
 using System.Web;
 using System.Web.Http;
 using CTWebAPI.App_Start;
+using CTWebAPI.Ninject;
 using CTWebAPI.Repository;
 using CTWebAPI.Repository.Interfaces;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;

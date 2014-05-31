@@ -35,6 +35,7 @@ namespace CTWebAPI.Repository.DataLayer
         public IEnumerable<TEntity> GetRange(int quanity)
         {
             IQueryable<TEntity> temp = _dbContext.Set<TEntity>();
+            if (quanity > temp.Count()) return temp;
             return temp.Take(quanity);
         }
 

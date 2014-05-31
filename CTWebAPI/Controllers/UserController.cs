@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using CTWebAPI.Models;
 using CTWebAPI.Repository.Interfaces;
 
@@ -21,16 +22,18 @@ namespace CTWebAPI.Controllers
             return _userRepository.GetRange(100);
         }
 
-        public User Get(int id)
+        [ResponseType(typeof(User))]
+        public IHttpActionResult Get(int id)
         {
             User user = _userRepository.Get(id);
 
             if (user == null)
             {
-                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+                return NotFound();
+                //throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
             }
 
-            return user;
+            return Ok(user);
         }
 
         public IEnumerable<User> GetRange(int quantity)

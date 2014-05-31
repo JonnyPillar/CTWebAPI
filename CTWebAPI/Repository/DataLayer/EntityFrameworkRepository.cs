@@ -2,28 +2,24 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using CTWebAPI.Repository.Interfaces;
 
 namespace CTWebAPI.Repository.DataLayer
 {
     public class EntityFrameworkRepository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity : class
     {
-        private readonly DbContext _dbContext;
-
-        public EntityFrameworkRepository()
-            : this(new DbContext("CTEntities"))
-        {
-        }
-
-        public EntityFrameworkRepository(DbContext dbContext)
-        {
-            if (dbContext == null) throw new ArgumentNullException("dbContext");
-            _dbContext = dbContext;
-        }
-
+        private DbContext _dbContext;
+        
         protected DbContext DbContext
         {
             get { return _dbContext; }
+            set { _dbContext = value; }
+        }
+
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
         }
 
         public void Create(TEntity entity)
@@ -61,6 +57,16 @@ namespace CTWebAPI.Repository.DataLayer
             if (entity == null) throw new ArgumentNullException("entity");
             DbContext.Set<TEntity>().Attach(entity);
             DbContext.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Delete(int id)
+        {
+            TEntity entityToDelete = _dbContext.Set<TEntity>().Find(id);
+            if (DbContext.Entry(entityToDelete).State == EntityState.Detached)
+            {
+                DbContext.Set<TEntity>().Attach(entityToDelete);
+            }
+            DbContext.Set<TEntity>().Remove(entityToDelete);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace CTWebAPI.Repository.DataLayer
     public class EntityFrameworkRepository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity : class
     {
         private DbContext _dbContext;
-        
+
         protected DbContext DbContext
         {
             get { return _dbContext; }

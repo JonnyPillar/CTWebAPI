@@ -8,21 +8,23 @@ namespace CTWebAPI.Controllers
 {
     public class UserController : ApiController
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUnitOfWork unitOfWork)
         {
-            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public IEnumerable<User> Get()
         {
-            return _userRepository.Get();
+            return _unitOfWork.UserRepository.Get();
         }
 
         public IHttpActionResult Get(int id)
         {
-            User user = _userRepository.Get(id);
+            IRepository<User, int> temp = _unitOfWork.UserRepository;
+            //User user = _unitOfWork.UserRepository.Get(id);
+            User user = temp.Get(id);
 
             if (user == null)
             {
@@ -34,7 +36,7 @@ namespace CTWebAPI.Controllers
 
         public IEnumerable<User> GetRange(int quantity)
         {
-            return _userRepository.GetRange(quantity);
+            return _unitOfWork.UserRepository.GetRange(quantity);
         }
 
         [HttpPost]
@@ -44,7 +46,8 @@ namespace CTWebAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _userRepository.Create(user);
+                    _unitOfWork.UserRepository.Create(user);
+                    _unitOfWork.SaveChanges();
                     return Created("", user);
                 }
                 return BadRequest("Invalid Model");
@@ -62,12 +65,13 @@ namespace CTWebAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    User originalUser = _userRepository.Get(id);
+                    User originalUser = _unitOfWork.UserRepository.Get(id);
                     if (originalUser == null || originalUser.UserID != id)
                     {
                         return NotFound();
                     }
-                    _userRepository.Update(user);
+                    _unitOfWork.UserRepository.Update(user);
+                    _unitOfWork.SaveChanges();
                     return Created("", user);
                 }
                 return BadRequest("Invalid Model");
@@ -84,7 +88,8 @@ namespace CTWebAPI.Controllers
             try
             {
                 if (user == null) return BadRequest("User Is Null");
-                _userRepository.Delete(user);
+                _unitOfWork.UserRepository.Delete(user);
+                _unitOfWork.SaveChanges();
                 return Ok();
             }
             catch (Exception ex)

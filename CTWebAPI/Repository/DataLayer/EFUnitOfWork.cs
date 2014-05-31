@@ -20,7 +20,7 @@ namespace CTWebAPI.Repository.DataLayer
         {
             get
             {
-                if (Equals(null))
+                if (_userRepository == null)
                 {
                     _userRepository = new UserRepository(_dbContext);
                 }

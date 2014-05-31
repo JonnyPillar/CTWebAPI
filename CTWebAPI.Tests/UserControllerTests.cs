@@ -16,7 +16,7 @@ namespace CTWebAPI.Tests
     {
         private IEnumerable<User> _fakeUsers;
         private UserController _userController;
-        private Mock<IUserRepository> _userRepository;
+        private Mock<IUnitOfWork> _unitOfWork;
 
         [TestInitialize]
         public void SetUp()
@@ -27,9 +27,9 @@ namespace CTWebAPI.Tests
         [TestMethod]
         public void UserController_Get_ReturnsAllUsers()
         {
-            _userRepository = new Mock<IUserRepository>();
-            _userRepository.Setup(x => x.Get()).Returns(_fakeUsers);
-            var userController = new UserController(_userRepository.Object);
+            _unitOfWork = new Mock<IUnitOfWork>();
+            _unitOfWork.Setup(x => x.UserRepository.Get()).Returns(_fakeUsers);
+            var userController = new UserController(_unitOfWork.Object);
 
             IEnumerable<User> users = userController.Get();
             Assert.AreSame(_fakeUsers, users);
@@ -38,7 +38,7 @@ namespace CTWebAPI.Tests
         [TestMethod]
         public void UserController_Get_ReturnsSingleUser()
         {
-            _userRepository = new Mock<IUserRepository>();
+            _unitOfWork = new Mock<IUnitOfWork>();
             var expectedUser = new User
             {
                 UserID = 2,
@@ -48,8 +48,8 @@ namespace CTWebAPI.Tests
                 CreationTimestamp = DateTime.Now
             };
 
-            _userRepository.Setup(x => x.Get(2)).Returns(expectedUser);
-            _userController = new UserController(_userRepository.Object);
+            _unitOfWork.Setup(x => x.UserRepository.Get(2)).Returns(expectedUser);
+            _userController = new UserController(_unitOfWork.Object);
 
             IHttpActionResult actionResult = _userController.Get(2);
             var user = actionResult as OkNegotiatedContentResult<User>;
@@ -58,24 +58,27 @@ namespace CTWebAPI.Tests
             Assert.AreSame(expectedUser, user.Content);
         }
 
-        [TestMethod]
-        public void UserController_Get_ReturnsNotFound()
-        {
-            _userRepository = new Mock<IUserRepository>();
-            _userController = new UserController(_userRepository.Object);
-            IHttpActionResult actionResult = _userController.Get(2);
-            Assert.IsInstanceOfType(actionResult, typeof (NotFoundResult));
-        }
+        
 
         [TestMethod]
         public void UserController_GetRange_ReturnsUsersInRange()
         {
-            _userRepository = new Mock<IUserRepository>();
-            _userRepository.Setup(x => x.GetRange(5)).Returns(_fakeUsers);
-            var userController = new UserController(_userRepository.Object);
+            _unitOfWork = new Mock<IUnitOfWork>();
+            _unitOfWork.Setup(x => x.UserRepository.GetRange(5)).Returns(_fakeUsers);
+            var userController = new UserController(_unitOfWork.Object);
 
             IEnumerable<User> users = userController.GetRange(5);
             Assert.AreSame(_fakeUsers, users);
+        }
+
+        [TestMethod]
+        public void UserController_Get_ReturnsNotFound()
+        {
+            _unitOfWork = new Mock<IUnitOfWork>();
+            _unitOfWork.Setup(x => x.UserRepository.Get(2));
+            _userController = new UserController(_unitOfWork.Object);
+            IHttpActionResult actionResult = _userController.Get(2);
+            Assert.IsInstanceOfType(actionResult, typeof(NotFoundResult));
         }
 
         private IEnumerable<User> GetUsers()

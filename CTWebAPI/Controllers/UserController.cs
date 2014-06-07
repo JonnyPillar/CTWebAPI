@@ -15,16 +15,16 @@ namespace CTWebAPI.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [HttpGet]
         public IEnumerable<User> Get()
         {
             return _unitOfWork.UserRepository.Get();
         }
 
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
-            IRepository<User, int> temp = _unitOfWork.UserRepository;
-            //User user = _unitOfWork.UserRepository.Get(id);
-            User user = temp.Get(id);
+            User user = _unitOfWork.UserRepository.Get(id);
 
             if (user == null)
             {
@@ -34,6 +34,7 @@ namespace CTWebAPI.Controllers
             return Ok(user);
         }
 
+        [HttpGet]
         public IEnumerable<User> GetRange(int quantity)
         {
             return _unitOfWork.UserRepository.GetRange(quantity);
@@ -44,11 +45,12 @@ namespace CTWebAPI.Controllers
         {
             try
             {
+                if (user == null) return BadRequest("Invalid Model");
                 if (ModelState.IsValid)
                 {
                     _unitOfWork.UserRepository.Create(user);
                     _unitOfWork.SaveChanges();
-                    return Created("", user);
+                    return Created("Http://www.exmaple.com", user);
                 }
                 return BadRequest("Invalid Model");
             }
@@ -72,7 +74,7 @@ namespace CTWebAPI.Controllers
                     }
                     _unitOfWork.UserRepository.Update(user);
                     _unitOfWork.SaveChanges();
-                    return Created("", user);
+                    return Created("Http://www.exmaple.com", user);
                 }
                 return BadRequest("Invalid Model");
             }
@@ -90,7 +92,7 @@ namespace CTWebAPI.Controllers
                 if (user == null) return BadRequest("User Is Null");
                 _unitOfWork.UserRepository.Delete(user);
                 _unitOfWork.SaveChanges();
-                return Ok();
+                return Ok("User Deleted Successfully");
             }
             catch (Exception ex)
             {

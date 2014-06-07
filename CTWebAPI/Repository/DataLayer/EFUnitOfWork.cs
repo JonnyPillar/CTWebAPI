@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Threading.Tasks;
 using CTWebAPI.Models;
 using CTWebAPI.Repository.Interfaces;
 
@@ -31,6 +32,11 @@ namespace CTWebAPI.Repository.DataLayer
         public void SaveChanges()
         {
             _dbContext.SaveChanges();
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
 
         public void Dispose()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using CTWebAPI.Models;
 
 namespace CTWebAPI.Repository.Interfaces
@@ -8,5 +9,6 @@ namespace CTWebAPI.Repository.Interfaces
         IRepository<User, int> UserRepository { get; }
 
         void SaveChanges();
+        Task SaveChangesAsync();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace CTWebAPI.Repository.Interfaces
 {
@@ -8,6 +9,7 @@ namespace CTWebAPI.Repository.Interfaces
     {
         IEnumerable<TEntity> Get();
         TEntity Get(TKey id);
+        Task<TEntity> GetAsync(TKey id);
         IEnumerable<TEntity> GetRange(int quantity);
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 

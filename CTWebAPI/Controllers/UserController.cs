@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 using CTWebAPI.Models;
 using CTWebAPI.Repository.Interfaces;
@@ -22,9 +23,9 @@ namespace CTWebAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
-            User user = _unitOfWork.UserRepository.Get(id);
+            User user = await _unitOfWork.UserRepository.GetAsync(id);
 
             if (user == null)
             {
@@ -41,15 +42,17 @@ namespace CTWebAPI.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] User user)
+        public async Task<IHttpActionResult> Post([FromBody] User user)
         {
             try
             {
                 if (user == null) return BadRequest("Invalid Model");
+                User existingUser = _unitOfWork.UserRepository.Get(user.UserID);
+                if (existingUser != null) return BadRequest("User Already Exists");
                 if (ModelState.IsValid)
                 {
                     _unitOfWork.UserRepository.Create(user);
-                    _unitOfWork.SaveChanges();
+                    await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", user);
                 }
                 return BadRequest("Invalid Model");
@@ -60,8 +63,8 @@ namespace CTWebAPI.Controllers
             }
         }
 
-        [HttpPost]
-        public IHttpActionResult Put(int id, [FromBody] User user)
+        [HttpPut]
+        public async Task<IHttpActionResult> Put(int id, [FromBody] User user)
         {
             try
             {
@@ -73,7 +76,7 @@ namespace CTWebAPI.Controllers
                         return NotFound();
                     }
                     _unitOfWork.UserRepository.Update(user);
-                    _unitOfWork.SaveChanges();
+                    await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", user);
                 }
                 return BadRequest("Invalid Model");
@@ -84,14 +87,14 @@ namespace CTWebAPI.Controllers
             }
         }
 
-        [HttpPost]
-        public IHttpActionResult Delete([FromBody] User user)
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete([FromBody] User user)
         {
             try
             {
                 if (user == null) return BadRequest("User Is Null");
                 _unitOfWork.UserRepository.Delete(user);
-                _unitOfWork.SaveChanges();
+                await _unitOfWork.SaveChangesAsync();
                 return Ok("User Deleted Successfully");
             }
             catch (Exception ex)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
 using CTWebAPI.Controllers;
@@ -88,7 +89,7 @@ namespace CTWebAPI.Tests
             _unitOfWork.Setup(x => x.UserRepository.Delete(userToDelete));
             _userController = new UserController(_unitOfWork.Object);
 
-            IHttpActionResult actionResult = _userController.Delete(userToDelete);
+            IHttpActionResult actionResult = _userController.Delete(userToDelete).Result;
             var user = actionResult as OkNegotiatedContentResult<string>;
 
             Assert.IsNotNull(user);
@@ -102,7 +103,7 @@ namespace CTWebAPI.Tests
             _unitOfWork.Setup(x => x.UserRepository.Delete(null));
             _userController = new UserController(_unitOfWork.Object);
 
-            IHttpActionResult actionResult = _userController.Delete(null);
+            IHttpActionResult actionResult = _userController.Delete(null).Result;
             var user = actionResult as OkNegotiatedContentResult<string>;
 
             Assert.IsNull(user);
@@ -142,11 +143,10 @@ namespace CTWebAPI.Tests
                 Admin = false,
                 CreationTimestamp = DateTime.Now
             };
-
-            _unitOfWork.Setup(x => x.UserRepository.Get(2)).Returns(expectedUser);
+            _unitOfWork.Setup(x => x.UserRepository.GetAsync(2)).ReturnsAsync(expectedUser);
             _userController = new UserController(_unitOfWork.Object);
 
-            IHttpActionResult actionResult = _userController.Get(2);
+            IHttpActionResult actionResult = _userController.Get(2).Result;
             var user = actionResult as OkNegotiatedContentResult<User>;
 
             Assert.IsNotNull(user);
@@ -160,7 +160,7 @@ namespace CTWebAPI.Tests
             _unitOfWork.Setup(x => x.UserRepository.Get(2));
             _userController = new UserController(_unitOfWork.Object);
 
-            IHttpActionResult response = _userController.Get(2);
+            IHttpActionResult response = _userController.Get(2).Result;
             var user = response as OkNegotiatedContentResult<User>;
 
             Assert.IsNull(user); //If null somethings gone wrong
@@ -175,7 +175,7 @@ namespace CTWebAPI.Tests
             _unitOfWork.Setup(i => i.UserRepository.Create(createdUser));
 
             var userController = new UserController(_unitOfWork.Object);
-            IHttpActionResult response = userController.Post(createdUser);
+            IHttpActionResult response = userController.Post(createdUser).Result;
             var result = response as CreatedNegotiatedContentResult<User>;
 
             Assert.IsNotNull(result);
@@ -191,7 +191,7 @@ namespace CTWebAPI.Tests
             _unitOfWork.Setup(i => i.UserRepository.Create(null));
 
             var userController = new UserController(_unitOfWork.Object);
-            IHttpActionResult response = userController.Post(null);
+            IHttpActionResult response = userController.Post(null).Result;
             var result = response as CreatedNegotiatedContentResult<User>;
 
             Assert.IsNull(result);
@@ -213,7 +213,7 @@ namespace CTWebAPI.Tests
             _unitOfWork.Setup(i => i.UserRepository.Update(updatedUser));
 
             var userController = new UserController(_unitOfWork.Object);
-            IHttpActionResult response = userController.Put(updatedUser.UserID, updatedUser);
+            IHttpActionResult response = userController.Put(updatedUser.UserID, updatedUser).Result;
             var result = response as CreatedNegotiatedContentResult<User>;
 
             Assert.IsNotNull(result);
@@ -239,7 +239,7 @@ namespace CTWebAPI.Tests
             _unitOfWork.Setup(i => i.UserRepository.Update(updatedUser));
 
             var userController = new UserController(_unitOfWork.Object);
-            IHttpActionResult response = userController.Put(updatedUser.UserID, updatedUser);
+            IHttpActionResult response = userController.Put(updatedUser.UserID, updatedUser).Result;
             var result = response as CreatedNegotiatedContentResult<User>;
 
             Assert.IsNull(result);
@@ -261,7 +261,7 @@ namespace CTWebAPI.Tests
             _unitOfWork.Setup(i => i.UserRepository.Update(updatedUser));
 
             var userController = new UserController(_unitOfWork.Object);
-            IHttpActionResult response = userController.Put(updatedUser.UserID, updatedUser);
+            IHttpActionResult response = userController.Put(updatedUser.UserID, updatedUser).Result;
             var result = response as CreatedNegotiatedContentResult<User>;
 
             Assert.IsNull(result);

@@ -170,6 +170,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController1.cs" />
@@ -231,6 +232,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DataLayer\EFUnitOfWork.cs" />
     <Compile Include="Repository\DataLayer\EntityFrameworkRepository.cs" />
+    <Compile Include="Repository\FoodRepository.cs" />
+    <Compile Include="Repository\Interfaces\IFoodRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Repository\Interfaces\IUserRepository.cs" />

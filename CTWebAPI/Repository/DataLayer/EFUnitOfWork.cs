@@ -11,6 +11,7 @@ namespace CTWebAPI.Repository.DataLayer
         private readonly DbContext _dbContext;
         private bool _disposed;
         private IRepository<User, int> _userRepository;
+        private IRepository<Food, int> _foodRepository;
 
         public EFUnitOfWork()
         {
@@ -26,6 +27,18 @@ namespace CTWebAPI.Repository.DataLayer
                     _userRepository = new UserRepository(_dbContext);
                 }
                 return _userRepository;
+            }
+        }
+
+        public IRepository<Food, int> FoodRepository
+        {
+            get
+            {
+                if (_foodRepository == null)
+                {
+                    _foodRepository = new FoodRepository(_dbContext);
+                }
+                return _foodRepository;
             }
         }
 

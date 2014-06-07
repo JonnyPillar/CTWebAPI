@@ -247,10 +247,6 @@ namespace CTWebAPI.Tests
         [Test]
         public void UserController_Put_UnsuccessfulInsert_NoUser()
         {
-            var currentUser = new User();
-            currentUser.UserID = 2;
-            currentUser.DOB = new DateTime(1991, 02, 21);
-
             var updatedUser = new User();
             updatedUser.UserID = 2;
             updatedUser.DOB = new DateTime(1992, 03, 22);

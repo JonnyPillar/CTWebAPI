@@ -9,12 +9,13 @@ namespace CTWebAPI.Repository.DataLayer
     public class EFUnitOfWork : IUnitOfWork
     {
         private readonly DbContext _dbContext;
-        private bool _disposed;
-        private IRepository<User, int> _userRepository;
-        private IRepository<Food, int> _foodRepository;
         private IRepository<Activity, int> _activityRepository;
+        private bool _disposed;
         private IRepository<FoodGroup, int> _foodGroupRepository;
+        private IRepository<Food, int> _foodRepository;
+        private IRepository<NutrientRDA, int> _nutrientRDARepository;
         private IRepository<Nutrient, int> _nutrientRepository;
+        private IRepository<User, int> _userRepository;
 
         public EFUnitOfWork()
         {
@@ -78,6 +79,18 @@ namespace CTWebAPI.Repository.DataLayer
                     _nutrientRepository = new NutrientRepository(_dbContext);
                 }
                 return _nutrientRepository;
+            }
+        }
+
+        public IRepository<NutrientRDA, int> NutrientRDARepository
+        {
+            get
+            {
+                if (_nutrientRDARepository == null)
+                {
+                    _nutrientRDARepository = new NutrientRDARespository(_dbContext);
+                }
+                return _nutrientRDARepository;
             }
         }
 

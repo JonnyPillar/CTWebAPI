@@ -11,6 +11,7 @@ namespace CTWebAPI.Repository.Interfaces
         IRepository<Activity, int> ActivityRepository { get; }
         IRepository<FoodGroup, int> FoodGroupRepository { get; }
         IRepository<Nutrient, int> NutrientRepository { get; }
+        IRepository<NutrientRDA, int> NutrientRDARepository { get; }
 
         void SaveChanges();
         Task SaveChangesAsync();

@@ -34,6 +34,6 @@ namespace CTWebAPI.Models.MetaData
 
         [ScaffoldColumn(false)]
         [DataMember]
-        public virtual ICollection<NutrientRDA> tbl_nutrient_rda { get; set; }
+        public virtual ICollection<NutrientRDAMetaData> tbl_nutrient_rda { get; set; }
     }
 }

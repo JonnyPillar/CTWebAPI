@@ -175,6 +175,7 @@
     <Compile Include="Controllers\FoodGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NutrientController.cs" />
+    <Compile Include="Controllers\NutrientRDAController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController1.cs" />
     <Compile Include="Global.asax.cs">
@@ -217,6 +218,7 @@
     <Compile Include="Models\MetaData\FoodGroupMetaData.cs" />
     <Compile Include="Models\MetaData\FoodMetaData.cs" />
     <Compile Include="Models\MetaData\NutrientMetaData.cs" />
+    <Compile Include="Models\MetaData\NutrientRDAMetaData.cs" />
     <Compile Include="Models\MetaData\UserMetaData.cs" />
     <Compile Include="Models\Metric.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
@@ -234,6 +236,7 @@
     <Compile Include="Models\PartialModels\Food.cs" />
     <Compile Include="Models\PartialModels\FoodGroup.cs" />
     <Compile Include="Models\PartialModels\Nutrient.cs" />
+    <Compile Include="Models\PartialModels\NutrientRDA.cs" />
     <Compile Include="Models\PartialModels\User.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
@@ -249,10 +252,12 @@
     <Compile Include="Repository\Interfaces\IActivityRespository.cs" />
     <Compile Include="Repository\Interfaces\IFoodGroupRepository.cs" />
     <Compile Include="Repository\Interfaces\IFoodRepository.cs" />
+    <Compile Include="Repository\Interfaces\INutrientRDARepository.cs" />
     <Compile Include="Repository\Interfaces\INutrientRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Repository\Interfaces\IUserRepository.cs" />
+    <Compile Include="Repository\NutrientRDARespository.cs" />
     <Compile Include="Repository\NutrientRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>

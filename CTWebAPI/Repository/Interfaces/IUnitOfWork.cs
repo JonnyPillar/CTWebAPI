@@ -8,6 +8,7 @@ namespace CTWebAPI.Repository.Interfaces
     {
         IRepository<User, int> UserRepository { get; }
         IRepository<Food, int> FoodRepository { get; }
+        IRepository<FoodNutrientLog, int> FoodNutrientLogRepository { get; }
         IRepository<FoodGroup, int> FoodGroupRepository { get; }
         IRepository<FoodLog, int> FoodLogRepository { get; }
         IRepository<Activity, int> ActivityRepository { get; }

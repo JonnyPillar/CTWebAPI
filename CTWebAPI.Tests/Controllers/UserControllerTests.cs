@@ -168,8 +168,14 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void UserController_Post_SuccessfulInsert()
         {
-            var createdUser = new User();
-            createdUser.UserID = 1;
+            var createdUser = new User
+            {
+                UserID = 1,
+                DOB = DateTime.Now,
+                Gender = false,
+                Admin = false,
+                CreationTimestamp = DateTime.Now
+            };
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.UserRepository.Create(createdUser));
 
@@ -199,13 +205,23 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void UserController_Put_SuccessfulUpdate()
         {
-            var currentUser = new User();
-            currentUser.UserID = 2;
-            currentUser.DOB = new DateTime(1991, 02, 21);
+            var currentUser = new User
+            {
+                UserID = 2,
+                DOB = new DateTime(1991, 02, 21),
+                Gender = false,
+                Admin = false,
+                CreationTimestamp = DateTime.Now
+            };
 
-            var updatedUser = new User();
-            updatedUser.UserID = 2;
-            updatedUser.DOB = new DateTime(1992, 03, 22);
+            var updatedUser = new User
+            {
+                UserID = 2,
+                DOB = new DateTime(1992, 03, 22),
+                Gender = false,
+                Admin = false,
+                CreationTimestamp = DateTime.Now
+            };
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.UserRepository.Get(2)).Returns(currentUser);
@@ -225,13 +241,23 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void UserController_Put_UnsuccessfulInsert_DifferentUser()
         {
-            var currentUser = new User();
-            currentUser.UserID = 3;
-            currentUser.DOB = new DateTime(1991, 02, 21);
+            var currentUser = new User
+            {
+                UserID = 3,
+                DOB = new DateTime(1991, 02, 21),
+                Gender = false,
+                Admin = false,
+                CreationTimestamp = DateTime.Now
+            };
 
-            var updatedUser = new User();
-            updatedUser.UserID = 2;
-            updatedUser.DOB = new DateTime(1992, 03, 22);
+            var updatedUser = new User
+            {
+                UserID = 2,
+                DOB = new DateTime(1992, 03, 22),
+                Gender = false,
+                Admin = false,
+                CreationTimestamp = DateTime.Now
+            };
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.UserRepository.Get(2)).Returns(currentUser);
@@ -247,9 +273,14 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void UserController_Put_UnsuccessfulInsert_NoUser()
         {
-            var updatedUser = new User();
-            updatedUser.UserID = 2;
-            updatedUser.DOB = new DateTime(1992, 03, 22);
+            var updatedUser = new User
+            {
+                UserID = 2,
+                DOB = new DateTime(1992, 03, 22),
+                Gender = false,
+                Admin = false,
+                CreationTimestamp = DateTime.Now
+            };
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.UserRepository.Get(2));

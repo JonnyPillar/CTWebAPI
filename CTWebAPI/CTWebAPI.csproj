@@ -175,6 +175,7 @@
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\FoodGroupController.cs" />
     <Compile Include="Controllers\FoodLogController.cs" />
+    <Compile Include="Controllers\FoodNutrientLogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NutrientController.cs" />
     <Compile Include="Controllers\NutrientRDAController.cs" />
@@ -213,7 +214,7 @@
     <Compile Include="Models\FoodLog.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FoodNutrientLogs.cs">
+    <Compile Include="Models\FoodNutrientLog.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MetaData\ActivityLogMetadData.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Models\MetaData\FoodGroupMetaData.cs" />
     <Compile Include="Models\MetaData\FoodLogMetaData.cs" />
     <Compile Include="Models\MetaData\FoodMetaData.cs" />
+    <Compile Include="Models\MetaData\FoodNutrientLogsMetaData.cs" />
     <Compile Include="Models\MetaData\NutrientMetaData.cs" />
     <Compile Include="Models\MetaData\NutrientRDAMetaData.cs" />
     <Compile Include="Models\MetaData\UserMetaData.cs" />
@@ -241,6 +243,7 @@
     <Compile Include="Models\PartialModels\Food.cs" />
     <Compile Include="Models\PartialModels\FoodGroup.cs" />
     <Compile Include="Models\PartialModels\FoodLog.cs" />
+    <Compile Include="Models\PartialModels\FoodNutrientLog.cs" />
     <Compile Include="Models\PartialModels\Nutrient.cs" />
     <Compile Include="Models\PartialModels\NutrientRDA.cs" />
     <Compile Include="Models\PartialModels\User.cs" />
@@ -256,11 +259,13 @@
     <Compile Include="Repository\DataLayer\EntityFrameworkRepository.cs" />
     <Compile Include="Repository\FoodGroupRepository.cs" />
     <Compile Include="Repository\FoodLogRepository.cs" />
+    <Compile Include="Repository\FoodNutrientLogRepository.cs" />
     <Compile Include="Repository\FoodRepository.cs" />
     <Compile Include="Repository\Interfaces\IActivityLog.cs" />
     <Compile Include="Repository\Interfaces\IActivityRespository.cs" />
     <Compile Include="Repository\Interfaces\IFoodGroupRepository.cs" />
     <Compile Include="Repository\Interfaces\IFoodLogRepository.cs" />
+    <Compile Include="Repository\Interfaces\IFoodNutrientLog.cs" />
     <Compile Include="Repository\Interfaces\IFoodRepository.cs" />
     <Compile Include="Repository\Interfaces\INutrientRDARepository.cs" />
     <Compile Include="Repository\Interfaces\INutrientRepository.cs" />

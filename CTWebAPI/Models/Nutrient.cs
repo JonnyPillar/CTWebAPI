@@ -16,7 +16,7 @@ namespace CTWebAPI.Models
     {
         public Nutrient()
         {
-            this.tbl_food_nutrition_logs = new HashSet<FoodNutrientLogs>();
+            this.tbl_food_nutrition_logs = new HashSet<FoodNutrientLog>();
             this.tbl_nutrient_rda = new HashSet<NutrientRDA>();
         }
     
@@ -26,7 +26,7 @@ namespace CTWebAPI.Models
         public string Name { get; set; }
         public int DecimalRounding { get; set; }
     
-        public virtual ICollection<FoodNutrientLogs> tbl_food_nutrition_logs { get; set; }
+        public virtual ICollection<FoodNutrientLog> tbl_food_nutrition_logs { get; set; }
         public virtual ICollection<NutrientRDA> tbl_nutrient_rda { get; set; }
     }
 }

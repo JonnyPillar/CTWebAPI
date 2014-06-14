@@ -114,8 +114,13 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void ActivityController_Post_SuccessfulInsert()
         {
-            var createdActivity = new Activity();
-            createdActivity.ActivityID = 1;
+            var createdActivity = new Activity
+            {
+                ActivityID = 1,
+                Name = "Activity One",
+                CalorieBurnRate = 10,
+                ImageUrl = ""
+            };
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.ActivityRepository.Create(createdActivity));
 
@@ -145,13 +150,21 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void ActivityController_Put_SuccessfulUpdate()
         {
-            var currentActivity = new Activity();
-            currentActivity.ActivityID = 2;
-            currentActivity.Name = "Activity One";
+            var currentActivity = new Activity
+            {
+                ActivityID = 2,
+                Name = "Activity One",
+                CalorieBurnRate = 10,
+                ImageUrl = ""
+            };
 
-            var updatedActivity = new Activity();
-            updatedActivity.ActivityID = 2;
-            updatedActivity.Name = "Activity One";
+            var updatedActivity = new Activity
+            {
+                ActivityID = 2,
+                Name = "Activity One",
+                CalorieBurnRate = 10,
+                ImageUrl = ""
+            };
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.ActivityRepository.Get(2)).Returns(currentActivity);
@@ -171,13 +184,21 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void ActivityController_Put_UnsuccessfulInsert_DifferentActivity()
         {
-            var currentActivity = new Activity();
-            currentActivity.ActivityID = 3;
-            currentActivity.Name = "Activity One";
+            var currentActivity = new Activity
+            {
+                ActivityID = 3,
+                Name = "Activity One",
+                CalorieBurnRate = 10,
+                ImageUrl = ""
+            };
 
-            var updatedActivity = new Activity();
-            updatedActivity.ActivityID = 2;
-            updatedActivity.Name = "Activity One";
+            var updatedActivity = new Activity
+            {
+                ActivityID = 2,
+                Name = "Activity One",
+                CalorieBurnRate = 10,
+                ImageUrl = ""
+            };
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.ActivityRepository.Get(2)).Returns(currentActivity);
@@ -193,9 +214,13 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void ActivityController_Put_UnsuccessfulInsert_NoActivity()
         {
-            var updatedActivity = new Activity();
-            updatedActivity.ActivityID = 2;
-            updatedActivity.Name = "Activity One";
+            var updatedActivity = new Activity
+            {
+                ActivityID = 2,
+                Name = "Activity One",
+                CalorieBurnRate = 10,
+                ImageUrl = ""
+            };
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.ActivityRepository.Get(2));

@@ -120,8 +120,14 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void FoodLogController_Post_SuccessfulInsert()
         {
-            var createdFoodLog = new FoodLog();
-            createdFoodLog.FoodLogID = 1;
+            var createdFoodLog = new FoodLog
+            {
+                FoodLogID = 1,
+                FoodID = 101,
+                UserID = 8,
+                Quantity = 10,
+                CreationTimestamp = DateTime.Now
+            };
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.FoodLogRepository.Create(createdFoodLog));
 

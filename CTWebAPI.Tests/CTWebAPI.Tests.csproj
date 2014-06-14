@@ -73,6 +73,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Controllers\ActivityLogControllerTests.cs" />
+    <Compile Include="Controllers\Class1.cs" />
     <Compile Include="Controllers\FoodGroupControllerTests.cs" />
     <Compile Include="Controllers\FoodLogControllerTests.cs" />
     <Compile Include="Controllers\NutrientControllerTests.cs" />

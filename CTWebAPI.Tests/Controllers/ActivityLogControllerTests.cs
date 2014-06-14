@@ -119,9 +119,9 @@ namespace CTWebAPI.Tests.Controllers
             _activityLogController = new ActivityLogController(_unitOfWork.Object);
 
             IHttpActionResult actionResult = _activityLogController.Delete(activityLogToDelete).Result;
-            var ActivityLog = actionResult as OkNegotiatedContentResult<string>;
+            var activityLog = actionResult as OkNegotiatedContentResult<string>;
 
-            Assert.IsNotNull(ActivityLog);
+            Assert.IsNotNull(activityLog);
         }
 
         [Test]
@@ -133,9 +133,9 @@ namespace CTWebAPI.Tests.Controllers
             _activityLogController = new ActivityLogController(_unitOfWork.Object);
 
             IHttpActionResult actionResult = _activityLogController.Delete(null).Result;
-            var ActivityLog = actionResult as OkNegotiatedContentResult<string>;
+            var activityLog = actionResult as OkNegotiatedContentResult<string>;
 
-            Assert.IsNull(ActivityLog);
+            Assert.IsNull(activityLog);
         }
 
         [Test]
@@ -145,8 +145,8 @@ namespace CTWebAPI.Tests.Controllers
             _unitOfWork.Setup(x => x.ActivityLogRepository.GetRange(5)).Returns(_fakeActivityLog);
             var activityLogController = new ActivityLogController(_unitOfWork.Object);
 
-            IEnumerable<ActivityLog> ActivityLogs = activityLogController.GetRange(5);
-            Assert.AreEqual(_fakeActivityLog.Count(), ActivityLogs.Count());
+            IEnumerable<ActivityLog> activityLogs = activityLogController.GetRange(5);
+            Assert.AreEqual(_fakeActivityLog.Count(), activityLogs.Count());
         }
 
         [Test]
@@ -156,8 +156,8 @@ namespace CTWebAPI.Tests.Controllers
             _unitOfWork.Setup(x => x.ActivityLogRepository.Get()).Returns(_fakeActivityLog);
             var activityLogController = new ActivityLogController(_unitOfWork.Object);
 
-            IEnumerable<ActivityLog> ActivityLogs = activityLogController.Get();
-            Assert.AreSame(_fakeActivityLog, ActivityLogs);
+            IEnumerable<ActivityLog> activityLogs = activityLogController.Get();
+            Assert.AreSame(_fakeActivityLog, activityLogs);
         }
 
         [Test]
@@ -203,8 +203,19 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void ActivityLogController_Post_SuccessfulInsert()
         {
-            var createdActivityLog = new ActivityLog();
-            createdActivityLog.ActivityLogID = 1;
+            var createdActivityLog = new ActivityLog
+            {
+                ActivityLogID = 1,
+                ActivityID = 1,
+                UserID = 8,
+                StartDate = DateTime.Now,
+                Duration = new TimeSpan(1, 12, 12),
+                Title = "Hello World",
+                Accent = (decimal)10.0,
+                HeartRate = 180,
+                Notes = "",
+                FileURL = ""
+            };
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.ActivityLogRepository.Create(createdActivityLog));
 

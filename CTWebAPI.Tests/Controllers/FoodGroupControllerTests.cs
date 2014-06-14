@@ -76,9 +76,9 @@ namespace CTWebAPI.Tests.Controllers
             _foodGroupController = new FoodGroupController(_unitOfWork.Object);
 
             IHttpActionResult actionResult = _foodGroupController.Delete(foodGroupToDelete).Result;
-            var FoodGroup = actionResult as OkNegotiatedContentResult<string>;
+            var foodGroup = actionResult as OkNegotiatedContentResult<string>;
 
-            Assert.IsNotNull(FoodGroup);
+            Assert.IsNotNull(foodGroup);
         }
 
         [Test]
@@ -90,9 +90,9 @@ namespace CTWebAPI.Tests.Controllers
             _foodGroupController = new FoodGroupController(_unitOfWork.Object);
 
             IHttpActionResult actionResult = _foodGroupController.Delete(null).Result;
-            var FoodGroup = actionResult as OkNegotiatedContentResult<string>;
+            var foodGroup = actionResult as OkNegotiatedContentResult<string>;
 
-            Assert.IsNull(FoodGroup);
+            Assert.IsNull(foodGroup);
         }
 
         [Test]
@@ -102,8 +102,8 @@ namespace CTWebAPI.Tests.Controllers
             _unitOfWork.Setup(x => x.FoodGroupRepository.GetRange(5)).Returns(_fakeFoodGroup);
             var foodGroupController = new FoodGroupController(_unitOfWork.Object);
 
-            IEnumerable<FoodGroup> FoodGroups = foodGroupController.GetRange(5);
-            Assert.AreEqual(_fakeFoodGroup.Count(), FoodGroups.Count());
+            IEnumerable<FoodGroup> foodGroups = foodGroupController.GetRange(5);
+            Assert.AreEqual(_fakeFoodGroup.Count(), foodGroups.Count());
         }
 
         [Test]
@@ -113,8 +113,8 @@ namespace CTWebAPI.Tests.Controllers
             _unitOfWork.Setup(x => x.FoodGroupRepository.Get()).Returns(_fakeFoodGroup);
             var foodGroupController = new FoodGroupController(_unitOfWork.Object);
 
-            IEnumerable<FoodGroup> FoodGroups = foodGroupController.Get();
-            Assert.AreSame(_fakeFoodGroup, FoodGroups);
+            IEnumerable<FoodGroup> foodGroups = foodGroupController.Get();
+            Assert.AreSame(_fakeFoodGroup, foodGroups);
         }
 
         [Test]
@@ -153,8 +153,11 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void FoodGroupController_Post_SuccessfulInsert()
         {
-            var createdFoodGroup = new FoodGroup();
-            createdFoodGroup.FoodGroupID = 1;
+            var createdFoodGroup = new FoodGroup
+            {
+                FoodGroupID = 1
+            };
+
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.FoodGroupRepository.Create(createdFoodGroup));
 
@@ -184,13 +187,17 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void FoodGroupController_Put_SuccessfulUpdate()
         {
-            var currentFoodGroup = new FoodGroup();
-            currentFoodGroup.FoodGroupID = 2;
-            currentFoodGroup.Name = "FoodGroup One";
+            var currentFoodGroup = new FoodGroup
+            {
+                FoodGroupID = 2,
+                Name = "FoodGroup One"
+            };
 
-            var updatedFoodGroup = new FoodGroup();
-            updatedFoodGroup.FoodGroupID = 2;
-            updatedFoodGroup.Name = "FoodGroup One";
+            var updatedFoodGroup = new FoodGroup
+            {
+                FoodGroupID = 2,
+                Name = "FoodGroup One"
+            };
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.FoodGroupRepository.Get(2)).Returns(currentFoodGroup);
@@ -210,13 +217,17 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void FoodGroupController_Put_UnsuccessfulInsert_DifferentFoodGroup()
         {
-            var currentFoodGroup = new FoodGroup();
-            currentFoodGroup.FoodGroupID = 3;
-            currentFoodGroup.Name = "FoodGroup One";
+            var currentFoodGroup = new FoodGroup
+            {
+                FoodGroupID = 3,
+                Name = "FoodGroup One"
+            };
 
-            var updatedFoodGroup = new FoodGroup();
-            updatedFoodGroup.FoodGroupID = 2;
-            updatedFoodGroup.Name = "FoodGroup One";
+            var updatedFoodGroup = new FoodGroup
+            {
+                FoodGroupID = 2,
+                Name = "FoodGroup One"
+            };
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.FoodGroupRepository.Get(2)).Returns(currentFoodGroup);
@@ -232,9 +243,11 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void FoodGroupController_Put_UnsuccessfulInsert_NoFoodGroup()
         {
-            var updatedFoodGroup = new FoodGroup();
-            updatedFoodGroup.FoodGroupID = 2;
-            updatedFoodGroup.Name = "FoodGroup One";
+            var updatedFoodGroup = new FoodGroup
+            {
+                FoodGroupID = 2,
+                Name = "FoodGroup One"
+            };
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.FoodGroupRepository.Get(2));

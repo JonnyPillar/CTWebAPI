@@ -44,16 +44,16 @@ namespace CTWebAPI.Models.MetaData
         [DataMember]
         public int Personality { get; set; }
 
-        [IgnoreDataMember]
         [ScaffoldColumn(false)]
+        [DataMember]
         public virtual ICollection<ActivityLog> tbl_activity_logs { get; set; }
 
-        [IgnoreDataMember]
         [ScaffoldColumn(false)]
+        [DataMember]
         public virtual ICollection<FoodLog> tbl_food_logs { get; set; }
 
-        [IgnoreDataMember]
         [ScaffoldColumn(false)]
+        [DataMember]
         public virtual ICollection<MetricLogs> tbl_metric_logs { get; set; }
     }
 }

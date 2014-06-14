@@ -8,7 +8,7 @@ using CTWebAPI.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;
 
-namespace CTWebAPI.Tests
+namespace CTWebAPI.Tests.Controllers
 {
     [TestFixture]
     internal class NutrientControllerTests

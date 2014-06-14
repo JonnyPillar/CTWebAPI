@@ -9,7 +9,7 @@ using CTWebAPI.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;
 
-namespace CTWebAPI.Tests
+namespace CTWebAPI.Tests.Controllers
 {
     [TestFixture]
     public class UserControllerTests

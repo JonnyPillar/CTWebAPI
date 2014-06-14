@@ -29,6 +29,6 @@ namespace CTWebAPI.Models.MetaData
 
         [IgnoreDataMember]
         [ScaffoldColumn(false)]
-        public virtual ICollection<ActivityLogs> tbl_activity_logs { get; set; }
+        public virtual ICollection<ActivityLog> tbl_activity_logs { get; set; }
     }
 }

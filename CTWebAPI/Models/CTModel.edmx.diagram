@@ -6,9 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="368df8d6f501493abee4a7ff4db17724" Name="Diagram1">
         <EntityTypeShape EntityType="CTModel.Activity" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTModel.ActivityLogs" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTModel.ActivityLog" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CTModel.FoodGroup" Width="1.5" PointX="1.5" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTModel.FoodLogs" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTModel.FoodLog" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="CTModel.FoodNutrientLogs" Width="1.5" PointX="11" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CTModel.Food" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CTModel.MetricLogs" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />

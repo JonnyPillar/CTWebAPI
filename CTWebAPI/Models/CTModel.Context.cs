@@ -26,9 +26,9 @@ namespace CTWebAPI.Models
         }
     
         public virtual DbSet<Activity> Activities { get; set; }
-        public virtual DbSet<ActivityLogs> ActivityLogs { get; set; }
+        public virtual DbSet<ActivityLog> ActivityLogs1 { get; set; }
         public virtual DbSet<FoodGroup> FoodGroups1 { get; set; }
-        public virtual DbSet<FoodLogs> FoodLogs { get; set; }
+        public virtual DbSet<FoodLog> FoodLogs1 { get; set; }
         public virtual DbSet<FoodNutrientLogs> FoodNutrientLogs { get; set; }
         public virtual DbSet<Food> Foods1 { get; set; }
         public virtual DbSet<MetricLogs> MetricLogs { get; set; }

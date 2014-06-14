@@ -12,7 +12,7 @@ namespace CTWebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class FoodLogs
+    public partial class FoodLog
     {
         public int FoodLogID { get; set; }
         public int FoodID { get; set; }

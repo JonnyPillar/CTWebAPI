@@ -12,7 +12,7 @@ namespace CTWebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ActivityLogs
+    public partial class ActivityLog
     {
         public int ActivityLogID { get; set; }
         public int ActivityID { get; set; }

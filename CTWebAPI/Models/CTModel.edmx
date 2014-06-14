@@ -318,7 +318,7 @@
           <Property Name="ImageUrl" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbl_activity_logs" Relationship="Self.FK_activity_id" FromRole="tbl_activities" ToRole="tbl_activity_logs" />
         </EntityType>
-        <EntityType Name="ActivityLogs">
+        <EntityType Name="ActivityLog">
           <Key>
             <PropertyRef Name="ActivityLogID" />
           </Key>
@@ -345,7 +345,7 @@
           <Property Name="SourceID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tbl_foods" Relationship="Self.fk_food_group_id1" FromRole="tbl_food_groups" ToRole="tbl_foods" />
         </EntityType>
-        <EntityType Name="FoodLogs">
+        <EntityType Name="FoodLog">
           <Key>
             <PropertyRef Name="FoodLogID" />
           </Key>
@@ -448,7 +448,7 @@
         </EntityType>
         <Association Name="FK_activity_id">
           <End Role="tbl_activities" Type="CTModel.Activity" Multiplicity="1" />
-          <End Role="tbl_activity_logs" Type="CTModel.ActivityLogs" Multiplicity="*" />
+          <End Role="tbl_activity_logs" Type="CTModel.ActivityLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_activities">
               <PropertyRef Name="ActivityID" />
@@ -462,7 +462,7 @@
           <End Role="tbl_users" Type="CTModel.User" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="tbl_activity_logs" Type="CTModel.ActivityLogs" Multiplicity="*" />
+          <End Role="tbl_activity_logs" Type="CTModel.ActivityLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_users">
               <PropertyRef Name="UserID" />
@@ -486,7 +486,7 @@
         </Association>
         <Association Name="FK_food_log_food_id">
           <End Role="tbl_foods" Type="CTModel.Food" Multiplicity="1" />
-          <End Role="tbl_food_logs" Type="CTModel.FoodLogs" Multiplicity="*" />
+          <End Role="tbl_food_logs" Type="CTModel.FoodLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_foods">
               <PropertyRef Name="FoodID" />
@@ -500,7 +500,7 @@
           <End Role="tbl_users" Type="CTModel.User" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="tbl_food_logs" Type="CTModel.FoodLogs" Multiplicity="*" />
+          <End Role="tbl_food_logs" Type="CTModel.FoodLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_users">
               <PropertyRef Name="UserID" />
@@ -576,9 +576,9 @@
         </Association>
         <EntityContainer Name="CTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activities" EntityType="CTModel.Activity" />
-          <EntitySet Name="ActivityLogs" EntityType="CTModel.ActivityLogs" />
+          <EntitySet Name="ActivityLogs1" EntityType="CTModel.ActivityLog" />
           <EntitySet Name="FoodGroups1" EntityType="CTModel.FoodGroup" />
-          <EntitySet Name="FoodLogs" EntityType="CTModel.FoodLogs" />
+          <EntitySet Name="FoodLogs1" EntityType="CTModel.FoodLog" />
           <EntitySet Name="FoodNutrientLogs" EntityType="CTModel.FoodNutrientLogs" />
           <EntitySet Name="Foods1" EntityType="CTModel.Food" />
           <EntitySet Name="MetricLogs" EntityType="CTModel.MetricLogs" />
@@ -588,11 +588,11 @@
           <EntitySet Name="User" EntityType="CTModel.User" />
           <AssociationSet Name="FK_activity_id" Association="Self.FK_activity_id">
             <End Role="tbl_activities" EntitySet="Activities" />
-            <End Role="tbl_activity_logs" EntitySet="ActivityLogs" />
+            <End Role="tbl_activity_logs" EntitySet="ActivityLogs1" />
           </AssociationSet>
           <AssociationSet Name="FK_activity_user_id" Association="Self.FK_activity_user_id">
             <End Role="tbl_users" EntitySet="User" />
-            <End Role="tbl_activity_logs" EntitySet="ActivityLogs" />
+            <End Role="tbl_activity_logs" EntitySet="ActivityLogs1" />
           </AssociationSet>
           <AssociationSet Name="fk_food_group_id1" Association="Self.fk_food_group_id1">
             <End Role="tbl_food_groups" EntitySet="FoodGroups1" />
@@ -600,11 +600,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_food_log_food_id" Association="Self.FK_food_log_food_id">
             <End Role="tbl_foods" EntitySet="Foods1" />
-            <End Role="tbl_food_logs" EntitySet="FoodLogs" />
+            <End Role="tbl_food_logs" EntitySet="FoodLogs1" />
           </AssociationSet>
           <AssociationSet Name="FK_food_log_user_id" Association="Self.FK_food_log_user_id">
             <End Role="tbl_users" EntitySet="User" />
-            <End Role="tbl_food_logs" EntitySet="FoodLogs" />
+            <End Role="tbl_food_logs" EntitySet="FoodLogs1" />
           </AssociationSet>
           <AssociationSet Name="fk_food_nutrient_food_id" Association="Self.fk_food_nutrient_food_id">
             <End Role="tbl_foods" EntitySet="Foods1" />
@@ -643,8 +643,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ActivityLogs">
-            <EntityTypeMapping TypeName="CTModel.ActivityLogs">
+          <EntitySetMapping Name="ActivityLogs1">
+            <EntityTypeMapping TypeName="CTModel.ActivityLog">
               <MappingFragment StoreEntitySet="tbl_activity_logs">
                 <ScalarProperty Name="ActivityLogID" ColumnName="ActivityLogID" />
                 <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
@@ -669,8 +669,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FoodLogs">
-            <EntityTypeMapping TypeName="CTModel.FoodLogs">
+          <EntitySetMapping Name="FoodLogs1">
+            <EntityTypeMapping TypeName="CTModel.FoodLog">
               <MappingFragment StoreEntitySet="tbl_food_logs">
                 <ScalarProperty Name="FoodLogID" ColumnName="FoodLogID" />
                 <ScalarProperty Name="FoodID" ColumnName="FoodID" />

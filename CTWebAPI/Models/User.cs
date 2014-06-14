@@ -16,8 +16,8 @@ namespace CTWebAPI.Models
     {
         public User()
         {
-            this.tbl_activity_logs = new HashSet<ActivityLogs>();
-            this.tbl_food_logs = new HashSet<FoodLogs>();
+            this.tbl_activity_logs = new HashSet<ActivityLog>();
+            this.tbl_food_logs = new HashSet<FoodLog>();
             this.tbl_metric_logs = new HashSet<MetricLogs>();
         }
     
@@ -31,8 +31,8 @@ namespace CTWebAPI.Models
         public int ActivityLevelType { get; set; }
         public int Personality { get; set; }
     
-        public virtual ICollection<ActivityLogs> tbl_activity_logs { get; set; }
-        public virtual ICollection<FoodLogs> tbl_food_logs { get; set; }
+        public virtual ICollection<ActivityLog> tbl_activity_logs { get; set; }
+        public virtual ICollection<FoodLog> tbl_food_logs { get; set; }
         public virtual ICollection<MetricLogs> tbl_metric_logs { get; set; }
     }
 }

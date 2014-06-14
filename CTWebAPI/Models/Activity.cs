@@ -16,7 +16,7 @@ namespace CTWebAPI.Models
     {
         public Activity()
         {
-            this.tbl_activity_logs = new HashSet<ActivityLogs>();
+            this.tbl_activity_logs = new HashSet<ActivityLog>();
         }
     
         public int ActivityID { get; set; }
@@ -24,6 +24,6 @@ namespace CTWebAPI.Models
         public decimal CalorieBurnRate { get; set; }
         public string ImageUrl { get; set; }
     
-        public virtual ICollection<ActivityLogs> tbl_activity_logs { get; set; }
+        public virtual ICollection<ActivityLog> tbl_activity_logs { get; set; }
     }
 }

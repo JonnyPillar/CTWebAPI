@@ -43,7 +43,7 @@ namespace CTWebAPI.Models.MetaData
 
         [IgnoreDataMember]
         [ScaffoldColumn(false)]
-        public virtual ICollection<FoodLogs> tbl_food_logs { get; set; }
+        public virtual ICollection<FoodLog> tbl_food_logs { get; set; }
 
         [IgnoreDataMember]
         [ScaffoldColumn(false)]

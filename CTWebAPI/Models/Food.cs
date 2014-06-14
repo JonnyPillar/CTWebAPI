@@ -16,7 +16,7 @@ namespace CTWebAPI.Models
     {
         public Food()
         {
-            this.tbl_food_logs = new HashSet<FoodLogs>();
+            this.tbl_food_logs = new HashSet<FoodLog>();
             this.tbl_food_nutrition_logs = new HashSet<FoodNutrientLogs>();
         }
     
@@ -29,7 +29,7 @@ namespace CTWebAPI.Models
         public string ManufactureName { get; set; }
     
         public virtual FoodGroup tbl_food_groups { get; set; }
-        public virtual ICollection<FoodLogs> tbl_food_logs { get; set; }
+        public virtual ICollection<FoodLog> tbl_food_logs { get; set; }
         public virtual ICollection<FoodNutrientLogs> tbl_food_nutrition_logs { get; set; }
     }
 }

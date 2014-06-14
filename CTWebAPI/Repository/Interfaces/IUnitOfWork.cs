@@ -8,6 +8,7 @@ namespace CTWebAPI.Repository.Interfaces
     {
         IRepository<User, int> UserRepository { get; }
         IRepository<Food, int> FoodRepository { get; }
+        IRepository<Activity, int> ActivityRepository { get; }
 
         void SaveChanges();
         Task SaveChangesAsync();

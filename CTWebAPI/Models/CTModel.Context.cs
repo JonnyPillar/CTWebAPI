@@ -25,7 +25,7 @@ namespace CTWebAPI.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Activites> Activites { get; set; }
+        public virtual DbSet<Activity> Activities { get; set; }
         public virtual DbSet<ActivityLogs> ActivityLogs { get; set; }
         public virtual DbSet<FoodGroup> FoodGroups1 { get; set; }
         public virtual DbSet<FoodLogs> FoodLogs { get; set; }

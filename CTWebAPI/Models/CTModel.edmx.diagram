@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="368df8d6f501493abee4a7ff4db17724" Name="Diagram1">
-        <EntityTypeShape EntityType="CTModel.Activites" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTModel.Activity" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CTModel.ActivityLogs" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CTModel.FoodGroup" Width="1.5" PointX="1.5" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CTModel.FoodLogs" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />

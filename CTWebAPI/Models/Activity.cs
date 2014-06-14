@@ -12,9 +12,9 @@ namespace CTWebAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Activites
+    public partial class Activity
     {
-        public Activites()
+        public Activity()
         {
             this.tbl_activity_logs = new HashSet<ActivityLogs>();
         }

@@ -308,7 +308,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Activites">
+        <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="ActivityID" />
           </Key>
@@ -447,7 +447,7 @@
           <NavigationProperty Name="tbl_metric_logs" Relationship="Self.FK_tbl_user_id" FromRole="tbl_users" ToRole="tbl_metric_logs" />
         </EntityType>
         <Association Name="FK_activity_id">
-          <End Role="tbl_activities" Type="CTModel.Activites" Multiplicity="1" />
+          <End Role="tbl_activities" Type="CTModel.Activity" Multiplicity="1" />
           <End Role="tbl_activity_logs" Type="CTModel.ActivityLogs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_activities">
@@ -575,7 +575,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CTEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Activites" EntityType="CTModel.Activites" />
+          <EntitySet Name="Activities" EntityType="CTModel.Activity" />
           <EntitySet Name="ActivityLogs" EntityType="CTModel.ActivityLogs" />
           <EntitySet Name="FoodGroups1" EntityType="CTModel.FoodGroup" />
           <EntitySet Name="FoodLogs" EntityType="CTModel.FoodLogs" />
@@ -587,7 +587,7 @@
           <EntitySet Name="Nutrients1" EntityType="CTModel.Nutrient" />
           <EntitySet Name="User" EntityType="CTModel.User" />
           <AssociationSet Name="FK_activity_id" Association="Self.FK_activity_id">
-            <End Role="tbl_activities" EntitySet="Activites" />
+            <End Role="tbl_activities" EntitySet="Activities" />
             <End Role="tbl_activity_logs" EntitySet="ActivityLogs" />
           </AssociationSet>
           <AssociationSet Name="FK_activity_user_id" Association="Self.FK_activity_user_id">
@@ -633,8 +633,8 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CTModelStoreContainer" CdmEntityContainer="CTEntities">
-          <EntitySetMapping Name="Activites">
-            <EntityTypeMapping TypeName="CTModel.Activites">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="CTModel.Activity">
               <MappingFragment StoreEntitySet="tbl_activities">
                 <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

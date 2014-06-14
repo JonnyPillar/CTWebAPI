@@ -12,6 +12,7 @@ namespace CTWebAPI.Repository.DataLayer
         private bool _disposed;
         private IRepository<User, int> _userRepository;
         private IRepository<Food, int> _foodRepository;
+        private IRepository<Activity, int> _activityRepository;
 
         public EFUnitOfWork()
         {
@@ -39,6 +40,18 @@ namespace CTWebAPI.Repository.DataLayer
                     _foodRepository = new FoodRepository(_dbContext);
                 }
                 return _foodRepository;
+            }
+        }
+
+        public IRepository<Activity, int> ActivityRepository
+        {
+            get
+            {
+                if (_activityRepository == null)
+                {
+                    _activityRepository = new ActivityRespository(_dbContext);
+                }
+                return _activityRepository;
             }
         }
 

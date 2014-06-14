@@ -26,7 +26,7 @@ namespace CTWebAPI.Models
         public string Notes { get; set; }
         public string FileURL { get; set; }
     
-        public virtual Activites tbl_activities { get; set; }
+        public virtual Activity tbl_activities { get; set; }
         public virtual User tbl_users { get; set; }
     }
 }

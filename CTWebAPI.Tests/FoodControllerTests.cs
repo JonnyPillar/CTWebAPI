@@ -77,18 +77,7 @@ namespace CTWebAPI.Tests
         }
 
         [Test]
-        public void FoodController_Get_ReturnsAllFoods()
-        {
-            _unitOfWork = new Mock<IUnitOfWork>();
-            _unitOfWork.Setup(x => x.FoodRepository.Get()).Returns(_fakeFood);
-            var foodController = new FoodController(_unitOfWork.Object);
-
-            IEnumerable<Food> users = foodController.Get();
-            Assert.AreSame(_fakeFood, users);
-        }
-
-        [Test]
-        public void UserController_Delete_DeletesUser()
+        public void FoodController_Delete_DeletesFood()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
             var foodToDelete = new Food
@@ -105,24 +94,49 @@ namespace CTWebAPI.Tests
             _foodController = new FoodController(_unitOfWork.Object);
 
             IHttpActionResult actionResult = _foodController.Delete(foodToDelete).Result;
-            var user = actionResult as OkNegotiatedContentResult<string>;
+            var Food = actionResult as OkNegotiatedContentResult<string>;
 
-            Assert.IsNotNull(user);
+            Assert.IsNotNull(Food);
         }
 
         [Test]
-        public void UserController_GetRange_ReturnsUsersInRange()
+        public void FoodController_Delete_NullFood()
+        {
+            _unitOfWork = new Mock<IUnitOfWork>();
+
+            _unitOfWork.Setup(x => x.FoodRepository.Delete(null));
+            _foodController = new FoodController(_unitOfWork.Object);
+
+            IHttpActionResult actionResult = _foodController.Delete(null).Result;
+            var Food = actionResult as OkNegotiatedContentResult<string>;
+
+            Assert.IsNull(Food);
+        }
+
+        [Test]
+        public void FoodController_GetRange_ReturnsFoodsInRange()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(x => x.FoodRepository.GetRange(5)).Returns(_fakeFood);
             var foodController = new FoodController(_unitOfWork.Object);
 
-            IEnumerable<Food> users = foodController.GetRange(5);
-            Assert.AreEqual(_fakeFood.Count(), users.Count());
+            IEnumerable<Food> Foods = foodController.GetRange(5);
+            Assert.AreEqual(_fakeFood.Count(), Foods.Count());
         }
 
         [Test]
-        public void UserController_Get_ReturnsCorrectUser()
+        public void FoodController_Get_ReturnsAllFoods()
+        {
+            _unitOfWork = new Mock<IUnitOfWork>();
+            _unitOfWork.Setup(x => x.FoodRepository.Get()).Returns(_fakeFood);
+            var foodController = new FoodController(_unitOfWork.Object);
+
+            IEnumerable<Food> Foods = foodController.Get();
+            Assert.AreSame(_fakeFood, Foods);
+        }
+
+        [Test]
+        public void FoodController_Get_ReturnsCorrectFood()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
             var expectedFood = new Food
@@ -145,7 +159,7 @@ namespace CTWebAPI.Tests
         }
 
         [Test]
-        public void UserController_Get_ReturnsNotFound()
+        public void FoodController_Get_ReturnsNotFound()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(x => x.FoodRepository.Get(2));
@@ -158,7 +172,7 @@ namespace CTWebAPI.Tests
         }
 
         [Test]
-        public void UserController_Post_SuccessfulInsert()
+        public void FoodController_Post_SuccessfulInsert()
         {
             var createdFood = new Food();
             createdFood.FoodID = 1;
@@ -176,7 +190,7 @@ namespace CTWebAPI.Tests
         }
 
         [Test]
-        public void UserController_Post_UnsuccessfulInsert()
+        public void FoodController_Post_UnsuccessfulInsert()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.FoodRepository.Create(null));
@@ -189,7 +203,7 @@ namespace CTWebAPI.Tests
         }
 
         [Test]
-        public void UserController_Put_SuccessfulUpdate()
+        public void FoodController_Put_SuccessfulUpdate()
         {
             var currentFood = new Food();
             currentFood.FoodID = 2;
@@ -215,7 +229,7 @@ namespace CTWebAPI.Tests
         }
 
         [Test]
-        public void UserController_Put_UnsuccessfulInsert_DifferentUser()
+        public void FoodController_Put_UnsuccessfulInsert_DifferentFood()
         {
             var currentFood = new Food();
             currentFood.FoodID = 3;
@@ -237,7 +251,7 @@ namespace CTWebAPI.Tests
         }
 
         [Test]
-        public void UserController_Put_UnsuccessfulInsert_NoUser()
+        public void FoodController_Put_UnsuccessfulInsert_NoFood()
         {
             var updatedFood = new Food();
             updatedFood.FoodID = 2;
@@ -252,20 +266,6 @@ namespace CTWebAPI.Tests
             var result = response as CreatedNegotiatedContentResult<Food>;
 
             Assert.IsNull(result);
-        }
-
-        [Test]
-        public void UserController_Delete_NullUser()
-        {
-            _unitOfWork = new Mock<IUnitOfWork>();
-
-            _unitOfWork.Setup(x => x.UserRepository.Delete(null));
-            _foodController = new FoodController(_unitOfWork.Object);
-
-            IHttpActionResult actionResult = _foodController.Delete(null).Result;
-            var user = actionResult as OkNegotiatedContentResult<string>;
-
-            Assert.IsNull(user);
         }
     }
 }

@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ActivityLogControllerTests.cs" />
     <Compile Include="Controllers\FoodGroupControllerTests.cs" />
+    <Compile Include="Controllers\FoodLogControllerTests.cs" />
     <Compile Include="Controllers\NutrientControllerTests.cs" />
     <Compile Include="Controllers\NutrientRDAControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

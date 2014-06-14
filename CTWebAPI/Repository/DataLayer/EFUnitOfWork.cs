@@ -13,6 +13,7 @@ namespace CTWebAPI.Repository.DataLayer
         private IRepository<Activity, int> _activityRepository;
         private bool _disposed;
         private IRepository<FoodGroup, int> _foodGroupRepository;
+        private IRepository<FoodLog, int> _foodLogRepository;
         private IRepository<Food, int> _foodRepository;
         private IRepository<NutrientRDA, int> _nutrientRDARepository;
         private IRepository<Nutrient, int> _nutrientRepository;
@@ -105,6 +106,18 @@ namespace CTWebAPI.Repository.DataLayer
                     _activityLogRepository = new ActivityLogRepository(_dbContext);
                 }
                 return _activityLogRepository;
+            }
+        }
+
+        public IRepository<FoodLog, int> FoodLogRepository
+        {
+            get
+            {
+                if (_foodLogRepository == null)
+                {
+                    _foodLogRepository = new FoodLogRepository(_dbContext);
+                }
+                return _foodLogRepository;
             }
         }
 

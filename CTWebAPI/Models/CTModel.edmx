@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbl_activities">
           <Key>
             <PropertyRef Name="ActivityID" />
@@ -304,8 +304,7 @@
             <End Role="tbl_metric_logs" EntitySet="tbl_metric_logs" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -586,13 +585,13 @@
           <EntitySet Name="Metrics1" EntityType="CTModel.Metric" />
           <EntitySet Name="NutrientRDAs" EntityType="CTModel.NutrientRDA" />
           <EntitySet Name="Nutrients1" EntityType="CTModel.Nutrient" />
-          <EntitySet Name="Users1" EntityType="CTModel.User" />
+          <EntitySet Name="User" EntityType="CTModel.User" />
           <AssociationSet Name="FK_activity_id" Association="Self.FK_activity_id">
             <End Role="tbl_activities" EntitySet="Activites" />
             <End Role="tbl_activity_logs" EntitySet="ActivityLogs" />
           </AssociationSet>
           <AssociationSet Name="FK_activity_user_id" Association="Self.FK_activity_user_id">
-            <End Role="tbl_users" EntitySet="Users1" />
+            <End Role="tbl_users" EntitySet="User" />
             <End Role="tbl_activity_logs" EntitySet="ActivityLogs" />
           </AssociationSet>
           <AssociationSet Name="fk_food_group_id1" Association="Self.fk_food_group_id1">
@@ -604,7 +603,7 @@
             <End Role="tbl_food_logs" EntitySet="FoodLogs" />
           </AssociationSet>
           <AssociationSet Name="FK_food_log_user_id" Association="Self.FK_food_log_user_id">
-            <End Role="tbl_users" EntitySet="Users1" />
+            <End Role="tbl_users" EntitySet="User" />
             <End Role="tbl_food_logs" EntitySet="FoodLogs" />
           </AssociationSet>
           <AssociationSet Name="fk_food_nutrient_food_id" Association="Self.fk_food_nutrient_food_id">
@@ -620,7 +619,7 @@
             <End Role="tbl_metric_logs" EntitySet="MetricLogs" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_user_id" Association="Self.FK_tbl_user_id">
-            <End Role="tbl_users" EntitySet="Users1" />
+            <End Role="tbl_users" EntitySet="User" />
             <End Role="tbl_metric_logs" EntitySet="MetricLogs" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_nutrient_rda_tbl_nutrients" Association="Self.FK_tbl_nutrient_rda_tbl_nutrients">
@@ -748,7 +747,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users1">
+          <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="CTModel.User">
               <MappingFragment StoreEntitySet="tbl_users">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />

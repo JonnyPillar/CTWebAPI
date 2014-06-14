@@ -35,6 +35,6 @@ namespace CTWebAPI.Models
         public virtual DbSet<Metric> Metrics1 { get; set; }
         public virtual DbSet<NutrientRDA> NutrientRDAs { get; set; }
         public virtual DbSet<Nutrient> Nutrients1 { get; set; }
-        public virtual DbSet<User> Users1 { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

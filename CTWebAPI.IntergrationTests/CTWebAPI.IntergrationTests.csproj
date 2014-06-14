@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="EntityFrameworkRepositoryTests.cs" />
+    <Compile Include="UserIntegrationTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

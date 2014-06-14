@@ -18,11 +18,6 @@ namespace CTWebAPI.Repository.DataLayer
             set { _dbContext = value; }
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _dbContext.Set<TEntity>().Where(predicate);
-        }
-
         public IEnumerable<TEntity> Get()
         {
             return _dbContext.Set<TEntity>();
@@ -43,6 +38,11 @@ namespace CTWebAPI.Repository.DataLayer
             IQueryable<TEntity> temp = _dbContext.Set<TEntity>();
             if (quantity > temp.Count()) return temp;
             return temp.Take(quantity);
+        }
+
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _dbContext.Set<TEntity>().Where(predicate);
         }
 
         public void Create(TEntity entity)

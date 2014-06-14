@@ -72,6 +72,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FoodGroupControllerTests.cs" />
+    <Compile Include="NutrientControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FoodControllerTests.cs" />
     <Compile Include="ActivityControllerTest.cs" />

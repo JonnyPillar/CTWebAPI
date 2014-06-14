@@ -13,6 +13,8 @@ namespace CTWebAPI.Repository.DataLayer
         private IRepository<User, int> _userRepository;
         private IRepository<Food, int> _foodRepository;
         private IRepository<Activity, int> _activityRepository;
+        private IRepository<FoodGroup, int> _foodGroupRepository;
+        private IRepository<Nutrient, int> _nutrientRepository;
 
         public EFUnitOfWork()
         {
@@ -52,6 +54,30 @@ namespace CTWebAPI.Repository.DataLayer
                     _activityRepository = new ActivityRespository(_dbContext);
                 }
                 return _activityRepository;
+            }
+        }
+
+        public IRepository<FoodGroup, int> FoodGroupRepository
+        {
+            get
+            {
+                if (_foodGroupRepository == null)
+                {
+                    _foodGroupRepository = new FoodGroupRepository(_dbContext);
+                }
+                return _foodGroupRepository;
+            }
+        }
+
+        public IRepository<Nutrient, int> NutrientRepository
+        {
+            get
+            {
+                if (_nutrientRepository == null)
+                {
+                    _nutrientRepository = new NutrientRepository(_dbContext);
+                }
+                return _nutrientRepository;
             }
         }
 

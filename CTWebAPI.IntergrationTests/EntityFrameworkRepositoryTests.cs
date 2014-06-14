@@ -4,27 +4,27 @@ using NUnit.Framework;
 
 namespace CTWebAPI.IntergrationTests
 {
-    [TestFixture]
-    [Category("Intergration")]
+    //[TestFixture]
+    //[Category("Intergration")]
     public class EntityFrameworkRepositoryTests
     {
         private EFUnitOfWork _efUnitOfWork;
 
-        [SetUp]
-        public void SetUp()
-        {
-            _efUnitOfWork = new EFUnitOfWork();
-        }
+        //[SetUp]
+        //public void SetUp()
+        //{
+        //    _efUnitOfWork = new EFUnitOfWork();
+        //}
 
-        [TearDown]
-        public void TearDown()
-        {
-            _efUnitOfWork.Dispose();
-        }
+        //[TearDown]
+        //public void TearDown()
+        //{
+        //    _efUnitOfWork.Dispose();
+        //}
 
-        [Test]
-        public void UserRepository_()
-        {
-        }
+        //[Test]
+        //public void UserRepository_()
+        //{
+        //}
     }
 }

@@ -3,7 +3,7 @@ using CTWebAPI.Models.MetaData;
 
 namespace CTWebAPI.Models
 {
-    [MetadataType(typeof (FoodGroupMetaData))]
+    [MetadataType(typeof (ActivityLogMetadData))]
     public partial class ActivityLog
     {
     }

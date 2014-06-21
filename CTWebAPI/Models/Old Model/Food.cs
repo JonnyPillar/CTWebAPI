@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTWebAPI.Models
+namespace CTWebAPI.Models.Old_Model
 {
     using System;
     using System.Collections.Generic;
@@ -16,8 +16,8 @@ namespace CTWebAPI.Models
     {
         public Food()
         {
-            this.FoodLogs = new HashSet<FoodLog>();
-            this.FoodNutrientLogs = new HashSet<FoodNutrientLog>();
+            this.tbl_food_logs = new HashSet<FoodLog>();
+            this.tbl_food_nutrition_logs = new HashSet<FoodNutrientLog>();
         }
     
         public int FoodID { get; set; }
@@ -28,8 +28,8 @@ namespace CTWebAPI.Models
         public string Description { get; set; }
         public string ManufactureName { get; set; }
     
-        public virtual FoodGroup FoodGroup { get; set; }
-        public virtual ICollection<FoodLog> FoodLogs { get; set; }
-        public virtual ICollection<FoodNutrientLog> FoodNutrientLogs { get; set; }
+        public virtual FoodGroup tbl_food_groups { get; set; }
+        public virtual ICollection<FoodLog> tbl_food_logs { get; set; }
+        public virtual ICollection<FoodNutrientLog> tbl_food_nutrition_logs { get; set; }
     }
 }

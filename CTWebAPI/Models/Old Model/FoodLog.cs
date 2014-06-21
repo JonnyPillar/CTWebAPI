@@ -7,28 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTWebAPI.Models
+namespace CTWebAPI.Models.Old_Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class FoodLog
     {
-        public User()
-        {
-            this.ActivityLogs = new HashSet<ActivityLog>();
-            this.FoodLogs = new HashSet<FoodLog>();
-        }
-    
+        public int FoodLogID { get; set; }
+        public int FoodID { get; set; }
         public int UserID { get; set; }
-        public System.DateTime DOB { get; set; }
-        public bool Gender { get; set; }
-        public string PasswordHash { get; set; }
-        public string PasswordSalt { get; set; }
-        public bool Admin { get; set; }
+        public decimal Quantity { get; set; }
         public System.DateTime CreationTimestamp { get; set; }
     
-        public virtual ICollection<ActivityLog> ActivityLogs { get; set; }
-        public virtual ICollection<FoodLog> FoodLogs { get; set; }
+        public virtual Food tbl_foods { get; set; }
+        public virtual User tbl_users { get; set; }
     }
 }

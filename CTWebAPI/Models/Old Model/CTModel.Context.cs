@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTWebAPI.Models
+namespace CTWebAPI.Models.Old_Model
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CTEntitiesAzure : DbContext
+    public partial class CTEntities : DbContext
     {
-        public CTEntitiesAzure()
-            : base("name=CTEntitiesAzure")
+        public CTEntities()
+            : base("name=CTEntities")
         {
         }
     
@@ -26,13 +26,15 @@ namespace CTWebAPI.Models
         }
     
         public virtual DbSet<Activity> Activities { get; set; }
-        public virtual DbSet<ActivityLog> ActivityLogs { get; set; }
-        public virtual DbSet<Food> Foods { get; set; }
-        public virtual DbSet<FoodGroup> FoodGroups { get; set; }
-        public virtual DbSet<FoodLog> FoodLogs { get; set; }
-        public virtual DbSet<FoodNutrientLog> FoodNutrientLogs { get; set; }
-        public virtual DbSet<Nutrient> Nutrients { get; set; }
+        public virtual DbSet<ActivityLog> ActivityLogs1 { get; set; }
+        public virtual DbSet<FoodGroup> FoodGroups1 { get; set; }
+        public virtual DbSet<FoodLog> FoodLogs1 { get; set; }
+        public virtual DbSet<FoodNutrientLog> FoodNutrientLogs1 { get; set; }
+        public virtual DbSet<Food> Foods1 { get; set; }
+        public virtual DbSet<MetricLogs> MetricLogs { get; set; }
+        public virtual DbSet<Metric> Metrics1 { get; set; }
         public virtual DbSet<NutrientRDA> NutrientRDAs { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Nutrient> Nutrients1 { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

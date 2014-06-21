@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTWebAPI.Models
+namespace CTWebAPI.Models.Old_Model
 {
     using System;
     using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace CTWebAPI.Models
         public string Notes { get; set; }
         public string FileURL { get; set; }
     
-        public virtual Activity Activity { get; set; }
-        public virtual User User { get; set; }
+        public virtual Activity tbl_activities { get; set; }
+        public virtual User tbl_users { get; set; }
     }
 }

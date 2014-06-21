@@ -16,13 +16,13 @@ namespace CTWebAPI.Models
     {
         public FoodGroup()
         {
-            this.tbl_foods = new HashSet<Food>();
+            this.Foods = new HashSet<Food>();
         }
     
         public int FoodGroupID { get; set; }
         public string Name { get; set; }
         public int SourceID { get; set; }
     
-        public virtual ICollection<Food> tbl_foods { get; set; }
+        public virtual ICollection<Food> Foods { get; set; }
     }
 }

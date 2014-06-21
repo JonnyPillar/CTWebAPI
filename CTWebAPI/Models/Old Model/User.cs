@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTWebAPI.Models
+namespace CTWebAPI.Models.Old_Model
 {
     using System;
     using System.Collections.Generic;
@@ -16,8 +16,9 @@ namespace CTWebAPI.Models
     {
         public User()
         {
-            this.ActivityLogs = new HashSet<ActivityLog>();
-            this.FoodLogs = new HashSet<FoodLog>();
+            this.tbl_activity_logs = new HashSet<ActivityLog>();
+            this.tbl_food_logs = new HashSet<FoodLog>();
+            this.tbl_metric_logs = new HashSet<MetricLogs>();
         }
     
         public int UserID { get; set; }
@@ -27,8 +28,11 @@ namespace CTWebAPI.Models
         public string PasswordSalt { get; set; }
         public bool Admin { get; set; }
         public System.DateTime CreationTimestamp { get; set; }
+        public int ActivityLevelType { get; set; }
+        public int Personality { get; set; }
     
-        public virtual ICollection<ActivityLog> ActivityLogs { get; set; }
-        public virtual ICollection<FoodLog> FoodLogs { get; set; }
+        public virtual ICollection<ActivityLog> tbl_activity_logs { get; set; }
+        public virtual ICollection<FoodLog> tbl_food_logs { get; set; }
+        public virtual ICollection<MetricLogs> tbl_metric_logs { get; set; }
     }
 }

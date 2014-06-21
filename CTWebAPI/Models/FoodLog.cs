@@ -20,7 +20,7 @@ namespace CTWebAPI.Models
         public decimal Quantity { get; set; }
         public System.DateTime CreationTimestamp { get; set; }
     
-        public virtual Food tbl_foods { get; set; }
-        public virtual User tbl_users { get; set; }
+        public virtual Food Food { get; set; }
+        public virtual User User { get; set; }
     }
 }

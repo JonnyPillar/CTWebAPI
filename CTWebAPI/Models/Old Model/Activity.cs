@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTWebAPI.Models
+namespace CTWebAPI.Models.Old_Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Nutrient
+    public partial class Activity
     {
-        public Nutrient()
+        public Activity()
         {
-            this.FoodNutrientLogs = new HashSet<FoodNutrientLog>();
-            this.NutrientRDAs = new HashSet<NutrientRDA>();
+            this.tbl_activity_logs = new HashSet<ActivityLog>();
         }
     
-        public int NutrientID { get; set; }
-        public int SourceID { get; set; }
-        public int UnitType { get; set; }
+        public int ActivityID { get; set; }
         public string Name { get; set; }
-        public int DecimalRounding { get; set; }
+        public decimal CalorieBurnRate { get; set; }
+        public string ImageUrl { get; set; }
     
-        public virtual ICollection<FoodNutrientLog> FoodNutrientLogs { get; set; }
-        public virtual ICollection<NutrientRDA> NutrientRDAs { get; set; }
+        public virtual ICollection<ActivityLog> tbl_activity_logs { get; set; }
     }
 }

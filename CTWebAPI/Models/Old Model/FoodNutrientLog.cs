@@ -7,21 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTWebAPI.Models
+namespace CTWebAPI.Models.Old_Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class NutrientRDA
+    public partial class FoodNutrientLog
     {
-        public int NutrientRDAID { get; set; }
-        public int NutrientID { get; set; }
-        public bool Gender { get; set; }
-        public int AgeMin { get; set; }
-        public int AgeMax { get; set; }
+        public int NurtientLogID { get; set; }
+        public int FoodID { get; set; }
+        public int NurtientID { get; set; }
         public decimal Value { get; set; }
-        public int UnitType { get; set; }
     
-        public virtual Nutrient Nutrient { get; set; }
+        public virtual Food tbl_foods { get; set; }
+        public virtual Nutrient tbl_nutrients { get; set; }
     }
 }

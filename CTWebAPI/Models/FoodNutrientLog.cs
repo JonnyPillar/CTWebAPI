@@ -19,7 +19,7 @@ namespace CTWebAPI.Models
         public int NurtientID { get; set; }
         public decimal Value { get; set; }
     
-        public virtual Food tbl_foods { get; set; }
-        public virtual Nutrient tbl_nutrients { get; set; }
+        public virtual Food Food { get; set; }
+        public virtual Nutrient Nutrient { get; set; }
     }
 }

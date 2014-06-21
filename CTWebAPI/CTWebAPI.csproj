@@ -217,6 +217,45 @@
     <Compile Include="Models\FoodNutrientLog.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Nutrient.cs">
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NutrientRDA.cs">
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Old Model\Activity.cs">
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Old Model\ActivityLog.cs">
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Old Model\CTModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CTModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Old Model\CTModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Old Model\CTModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CTModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Old Model\Food.cs">
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Old Model\FoodGroup.cs">
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Old Model\FoodLog.cs">
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Old Model\FoodNutrientLog.cs">
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MetaData\ActivityLogMetadData.cs" />
     <Compile Include="Models\MetaData\ActivityMetaData.cs" />
     <Compile Include="Models\MetaData\FoodGroupMetaData.cs" />
@@ -226,16 +265,16 @@
     <Compile Include="Models\MetaData\NutrientMetaData.cs" />
     <Compile Include="Models\MetaData\NutrientRDAMetaData.cs" />
     <Compile Include="Models\MetaData\UserMetaData.cs" />
-    <Compile Include="Models\Metric.cs">
+    <Compile Include="Models\Old Model\Metric.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MetricLogs.cs">
+    <Compile Include="Models\Old Model\MetricLogs.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Nutrient.cs">
+    <Compile Include="Models\Old Model\Nutrient.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NutrientRDA.cs">
+    <Compile Include="Models\Old Model\NutrientRDA.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PartialModels\Activity.cs" />
@@ -247,6 +286,9 @@
     <Compile Include="Models\PartialModels\Nutrient.cs" />
     <Compile Include="Models\PartialModels\NutrientRDA.cs" />
     <Compile Include="Models\PartialModels\User.cs" />
+    <Compile Include="Models\Old Model\User.cs">
+      <DependentUpon>CTModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>CTModel.tt</DependentUpon>
     </Compile>
@@ -333,22 +375,40 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\CTModel.edmx">
+    <EntityDeploy Include="Models\Old Model\CTModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CTModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\CTModel.Context.tt">
+    <Content Include="Models\Old Model\CTModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CTModel.edmx</DependentUpon>
       <LastGenOutput>CTModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Old Model\CTModel.edmx.diagram">
+      <DependentUpon>CTModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\CTModel.edmx.sql" />
+    <Content Include="Models\Old Model\CTModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CTModel.edmx</DependentUpon>
+      <LastGenOutput>CTModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\CTModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CTModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <Content Include="Models\CTModel.edmx.diagram">
+      <DependentUpon>CTModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\CTModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CTModel.Context.cs</LastGenOutput>
       <DependentUpon>CTModel.edmx</DependentUpon>
     </Content>
     <Content Include="Models\CTModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CTModel.edmx</DependentUpon>
       <LastGenOutput>CTModel.cs</LastGenOutput>
+      <DependentUpon>CTModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTWebAPI.Models
+namespace CTWebAPI.Models.Old_Model
 {
     using System;
     using System.Collections.Generic;
@@ -16,8 +16,8 @@ namespace CTWebAPI.Models
     {
         public Nutrient()
         {
-            this.FoodNutrientLogs = new HashSet<FoodNutrientLog>();
-            this.NutrientRDAs = new HashSet<NutrientRDA>();
+            this.tbl_food_nutrition_logs = new HashSet<FoodNutrientLog>();
+            this.tbl_nutrient_rda = new HashSet<NutrientRDA>();
         }
     
         public int NutrientID { get; set; }
@@ -26,7 +26,7 @@ namespace CTWebAPI.Models
         public string Name { get; set; }
         public int DecimalRounding { get; set; }
     
-        public virtual ICollection<FoodNutrientLog> FoodNutrientLogs { get; set; }
-        public virtual ICollection<NutrientRDA> NutrientRDAs { get; set; }
+        public virtual ICollection<FoodNutrientLog> tbl_food_nutrition_logs { get; set; }
+        public virtual ICollection<NutrientRDA> tbl_nutrient_rda { get; set; }
     }
 }

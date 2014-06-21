@@ -7,22 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CTWebAPI.Models
+namespace CTWebAPI.Models.Old_Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Metric
+    public partial class MetricLogs
     {
-        public Metric()
-        {
-            this.tbl_metric_logs = new HashSet<MetricLogs>();
-        }
+        public int MetricLogID { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public Nullable<int> MetricID { get; set; }
+        public decimal Value { get; set; }
+        public System.DateTime CreationTimestamp { get; set; }
     
-        public int MetricID { get; set; }
-        public string Name { get; set; }
-        public int Type { get; set; }
-    
-        public virtual ICollection<MetricLogs> tbl_metric_logs { get; set; }
+        public virtual Metric tbl_metrics { get; set; }
+        public virtual User tbl_users { get; set; }
     }
 }

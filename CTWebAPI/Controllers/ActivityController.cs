@@ -76,7 +76,7 @@ namespace CTWebAPI.Controllers
                     {
                         return NotFound();
                     }
-                    _unitOfWork.ActivityRepository.Update(activity);
+                    _unitOfWork.ActivityRepository.Update(id, activity);
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", activity);
                 }

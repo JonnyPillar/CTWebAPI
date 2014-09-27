@@ -76,7 +76,7 @@ namespace CTWebAPI.Controllers
                     {
                         return NotFound();
                     }
-                    _unitOfWork.FoodLogRepository.Update(foodLog);
+                    _unitOfWork.FoodLogRepository.Update(id, foodLog);
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", foodLog);
                 }

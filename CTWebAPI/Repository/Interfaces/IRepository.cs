@@ -15,6 +15,7 @@ namespace CTWebAPI.Repository.Interfaces
 
         void Create(TEntity entity);
         void Delete(TEntity entity);
-        void Update(TEntity entity);
+        void Update(TKey key, TEntity entity);
+        bool Exists(Expression<Func<TEntity, bool>> predicate);
     }
 }

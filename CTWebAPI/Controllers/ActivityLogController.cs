@@ -76,7 +76,7 @@ namespace CTWebAPI.Controllers
                     {
                         return NotFound();
                     }
-                    _unitOfWork.ActivityLogRepository.Update(activityLog);
+                    _unitOfWork.ActivityLogRepository.Update(id, activityLog);
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", activityLog);
                 }

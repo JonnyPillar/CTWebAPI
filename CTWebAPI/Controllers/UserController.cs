@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using CTWebAPI.Models;
 using CTWebAPI.Models.DomainModels;
 using CTWebAPI.Repository.Interfaces;
 
@@ -47,11 +46,12 @@ namespace CTWebAPI.Controllers
         {
             try
             {
-                if (user == null) return BadRequest("Invalid Model");
-                User existingUser = _unitOfWork.UserRepository.Get(user.UserID);
-                if (existingUser != null) return BadRequest("User Already Exists");
-                if (ModelState.IsValid)
+                if (user != null && ModelState.IsValid)
                 {
+                    bool userAlreadyExists =
+                        _unitOfWork.UserRepository.Exists(x => x.EmailAddress.Equals(user.EmailAddress));
+                    if (userAlreadyExists) return BadRequest("User Already Exists");
+
                     _unitOfWork.UserRepository.Create(user);
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", user);
@@ -76,7 +76,7 @@ namespace CTWebAPI.Controllers
                     {
                         return NotFound();
                     }
-                    _unitOfWork.UserRepository.Update(user);
+                    _unitOfWork.UserRepository.Update(id, user);
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", user);
                 }

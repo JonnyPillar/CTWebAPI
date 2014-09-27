@@ -75,7 +75,7 @@ namespace CTWebAPI.Controllers
                     {
                         return NotFound();
                     }
-                    _unitOfWork.NutrientRDARepository.Update(nutrientRDA);
+                    _unitOfWork.NutrientRDARepository.Update(id, nutrientRDA);
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", nutrientRDA);
                 }

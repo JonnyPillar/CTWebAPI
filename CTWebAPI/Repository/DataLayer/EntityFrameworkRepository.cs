@@ -51,11 +51,18 @@ namespace CTWebAPI.Repository.DataLayer
             DbContext.Set<TEntity>().Add(entity);
         }
 
-        public void Update(TEntity entity)
+        public void Update(TKey key, TEntity entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
-            DbContext.Set<TEntity>().Attach(entity);
-            DbContext.Entry(entity).State = EntityState.Modified;
+
+            var currentEntity = DbContext.Set<TEntity>().Find(key);
+            DbContext.Entry(currentEntity).CurrentValues.SetValues(entity);
+        }
+
+        public bool Exists(Expression<Func<TEntity, bool>> predicate)
+        {
+            var result = _dbContext.Set<TEntity>().Where(predicate);
+            return result.Any();
         }
 
         public void Delete(TEntity entity)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices.ComTypes;
 using System.Runtime.Serialization;
 
 namespace CTWebAPI.Models.DomainModels
@@ -53,12 +54,10 @@ namespace CTWebAPI.Models.DomainModels
         [DataMember]
         public bool Admin { get; set; }
 
-        [Required]
         [ScaffoldColumn(false)]
         [DataMember]
         public DateTime CreationTimestamp { get; set; }
 
-        [Required]
         [ScaffoldColumn(false)]
         [DataMember]
         public DateTime LastUpdatedTimestamp { get; set; }

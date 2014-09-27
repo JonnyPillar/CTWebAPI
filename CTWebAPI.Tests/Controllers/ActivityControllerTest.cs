@@ -169,7 +169,7 @@ namespace CTWebAPI.Tests.Controllers
 
             _unitOfWork = new Mock<IUnitOfWork>();
             _unitOfWork.Setup(i => i.ActivityRepository.Get(2)).Returns(currentActivity);
-            _unitOfWork.Setup(i => i.ActivityRepository.Update(updatedActivity));
+            _unitOfWork.Setup(i => i.ActivityRepository.Update(updatedActivity.ActivityID, updatedActivity));
 
             var activityController = new ActivityController(_unitOfWork.Object);
             IHttpActionResult response = activityController.Put(updatedActivity.ActivityID, updatedActivity).Result;

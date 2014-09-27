@@ -194,6 +194,10 @@
     <Compile Include="Migrations\201409271223430_Added MetaData.Designer.cs">
       <DependentUpon>201409271223430_Added MetaData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409271311441_Removing Required Field From User Table For Creation and LastUpdated.cs" />
+    <Compile Include="Migrations\201409271311441_Removing Required Field From User Table For Creation and LastUpdated.Designer.cs">
+      <DependentUpon>201409271311441_Removing Required Field From User Table For Creation and LastUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CTModelV2.cs" />
     <Compile Include="Models\DomainModels\Activity.cs" />
@@ -205,15 +209,6 @@
     <Compile Include="Models\DomainModels\Nutrient.cs" />
     <Compile Include="Models\DomainModels\NutrientRDA.cs" />
     <Compile Include="Models\DomainModels\User.cs" />
-    <Compile Include="Models\MetaData\ActivityLogMetadData.cs" />
-    <Compile Include="Models\MetaData\ActivityMetaData.cs" />
-    <Compile Include="Models\MetaData\FoodGroupMetaData.cs" />
-    <Compile Include="Models\MetaData\FoodLogMetaData.cs" />
-    <Compile Include="Models\MetaData\FoodMetaData.cs" />
-    <Compile Include="Models\MetaData\FoodNutrientLogsMetaData.cs" />
-    <Compile Include="Models\MetaData\NutrientMetaData.cs" />
-    <Compile Include="Models\MetaData\NutrientRDAMetaData.cs" />
-    <Compile Include="Models\MetaData\UserMetaData.cs" />
     <Compile Include="Ninject\NinjectResolver.cs" />
     <Compile Include="Ninject\NinjectScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -355,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409271223430_Added MetaData.resx">
       <DependentUpon>201409271223430_Added MetaData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409271311441_Removing Required Field From User Table For Creation and LastUpdated.resx">
+      <DependentUpon>201409271311441_Removing Required Field From User Table For Creation and LastUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

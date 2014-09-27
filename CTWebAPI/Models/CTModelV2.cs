@@ -18,5 +18,19 @@ namespace CTWebAPI.Models
         public virtual DbSet<FoodNutrientRecord> FoodNutrientRecords { get; set; }
         public virtual DbSet<Nutrient> Nutrients { get; set; }
         public virtual DbSet<NutrientRDA> NutrientRdas { get; set; }
+
+        protected virtual void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>();
+            modelBuilder.Entity<Food>();
+            modelBuilder.Entity<Activity>();
+            modelBuilder.Entity<ActivityLog>();
+            modelBuilder.Entity<FoodGroup>();
+            modelBuilder.Entity<FoodLog>();
+            modelBuilder.Entity<FoodNutrientRecord>();
+            modelBuilder.Entity<Nutrient>();
+            modelBuilder.Entity<NutrientRDA>();
+            modelBuilder.Entity<NutrientRDA>();
+        }
     }
 }

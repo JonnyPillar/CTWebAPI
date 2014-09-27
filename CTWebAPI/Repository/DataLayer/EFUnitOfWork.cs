@@ -23,7 +23,8 @@ namespace CTWebAPI.Repository.DataLayer
 
         public EFUnitOfWork()
         {
-            _dbContext = new DbContext("CTModelV2");
+            _dbContext = new CTModelV2();
+            _dbContext.Configuration.ValidateOnSaveEnabled = true;
         }
 
         public IRepository<User, int> UserRepository

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using CTWebAPI.Models.DomainModels;
-using CTWebAPI.Repository.Interfaces;
+using CTWebAPI.Domain.Data.Models.DomainModels;
+using CTWebAPI.Domain.Services.Repository.Interfaces;
 
 namespace CTWebAPI.Controllers
 {
@@ -48,10 +48,11 @@ namespace CTWebAPI.Controllers
             try
             {
                 if (activity == null) return BadRequest("Invalid Model");
-                Activity existingActivity = _unitOfWork.ActivityRepository.Get(activity.ActivityID);
-                if (existingActivity != null) return BadRequest("Activity Already Exists");
+                
                 if (ModelState.IsValid)
                 {
+                    if (activity.ActivityID != 0) return BadRequest("Activity Already Exists");
+
                     _unitOfWork.ActivityRepository.Create(activity);
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", activity);

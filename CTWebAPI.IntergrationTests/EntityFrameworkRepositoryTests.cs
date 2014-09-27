@@ -1,5 +1,4 @@
-﻿using CTWebAPI.Models;
-using CTWebAPI.Repository.DataLayer;
+﻿using CTWebAPI.Domain.Services.Repository.DataLayer;
 using NUnit.Framework;
 
 namespace CTWebAPI.IntergrationTests

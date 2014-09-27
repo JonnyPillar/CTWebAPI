@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using CTWebAPI.Models.DomainModels;
-using CTWebAPI.Repository.Interfaces;
+using CTWebAPI.Domain.Data.Models.APIContracts.User;
+using CTWebAPI.Domain.Data.Models.DomainModels;
+using CTWebAPI.Domain.Services.Repository.Interfaces;
 
 namespace CTWebAPI.Controllers
 {
@@ -42,7 +43,7 @@ namespace CTWebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IHttpActionResult> Post([FromBody] User user)
+        public async Task<IHttpActionResult> Post([FromBody] UserPostModel user)
         {
             try
             {
@@ -52,7 +53,7 @@ namespace CTWebAPI.Controllers
                         _unitOfWork.UserRepository.Exists(x => x.EmailAddress.Equals(user.EmailAddress));
                     if (userAlreadyExists) return BadRequest("User Already Exists");
 
-                    _unitOfWork.UserRepository.Create(user);
+                    _unitOfWork.UserRepository.Create(new User(user));
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", user);
                 }
@@ -65,7 +66,7 @@ namespace CTWebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IHttpActionResult> Put(int id, [FromBody] User user)
+        public async Task<IHttpActionResult> Put(int id, [FromBody] UserPutModel user)
         {
             try
             {
@@ -76,7 +77,7 @@ namespace CTWebAPI.Controllers
                     {
                         return NotFound();
                     }
-                    _unitOfWork.UserRepository.Update(id, user);
+                    _unitOfWork.UserRepository.Update(id, new User(user));
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", user);
                 }

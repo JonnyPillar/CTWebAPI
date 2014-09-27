@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
-using CTWebAPI.Models.DomainModels;
 
-namespace CTWebAPI.Models.MetaData
+namespace CTWebAPI.Models.DomainModels
 {
-    public class FoodLogMetaData
+    public class FoodLog
     {
         [ScaffoldColumn(false)]
         [DataMember]
@@ -27,13 +26,16 @@ namespace CTWebAPI.Models.MetaData
 
         [Required]
         [DataMember]
-        [Display(Name = "Created")]
         public DateTime CreationTimestamp { get; set; }
 
+        [Required]
         [DataMember]
-        public virtual Food tbl_foods { get; set; }
+        public DateTime LastUpdatedTimestamp { get; set; }
 
         [DataMember]
-        public virtual User tbl_users { get; set; }
+        public virtual Food Food { get; set; }
+
+        [DataMember]
+        public virtual User User { get; set; }
     }
 }

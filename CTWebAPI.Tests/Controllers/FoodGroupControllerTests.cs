@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using CTWebAPI.Controllers;
 using CTWebAPI.Models;
+using CTWebAPI.Models.DomainModels;
 using CTWebAPI.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -30,31 +31,26 @@ namespace CTWebAPI.Tests.Controllers
                 new FoodGroup
                 {
                     FoodGroupID = 0,
-                    SourceID = 0,
                     Name = "FoodGroup 0",
                 },
                 new FoodGroup
                 {
                     FoodGroupID = 1,
-                    SourceID = 1,
                     Name = "FoodGroup 1",
                 },
                 new FoodGroup
                 {
                     FoodGroupID = 2,
-                    SourceID = 2,
                     Name = "FoodGroup 2",
                 },
                 new FoodGroup
                 {
                     FoodGroupID = 3,
-                    SourceID = 3,
                     Name = "FoodGroup 3",
                 },
                 new FoodGroup
                 {
                     FoodGroupID = 4,
-                    SourceID = 4,
                     Name = "FoodGroup 4",
                 }
             }.AsEnumerable();
@@ -68,7 +64,6 @@ namespace CTWebAPI.Tests.Controllers
             var foodGroupToDelete = new FoodGroup
             {
                 FoodGroupID = 0,
-                SourceID = 0,
                 Name = "FoodGroup 0",
             };
 
@@ -124,7 +119,6 @@ namespace CTWebAPI.Tests.Controllers
             var expectedFoodGroup = new FoodGroup
             {
                 FoodGroupID = 0,
-                SourceID = 0,
                 Name = "FoodGroup 0",
             };
             _unitOfWork.Setup(x => x.FoodGroupRepository.GetAsync(2)).ReturnsAsync(expectedFoodGroup);

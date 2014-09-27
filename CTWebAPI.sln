@@ -1,13 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTWebAPI", "CTWebAPI\CTWebAPI.csproj", "{9F4011A2-2D96-4D0C-A5A7-64413293A018}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTWebAPI.Tests", "CTWebAPI.Tests\CTWebAPI.Tests.csproj", "{596B693B-597C-4097-952D-F4754F13904B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTWebAPI.IntergrationTests", "CTWebAPI.IntergrationTests\CTWebAPI.IntergrationTests.csproj", "{281703DA-93CE-4AE5-AD2A-B7060149EF0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C7FB46C0-3537-405D-B5A4-53F31D080333}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
+using CTWebAPI.Models.DomainModels;
 
 namespace CTWebAPI.Models.MetaData
 {

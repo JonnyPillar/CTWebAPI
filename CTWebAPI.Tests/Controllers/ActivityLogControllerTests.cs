@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using CTWebAPI.Controllers;
 using CTWebAPI.Models;
+using CTWebAPI.Models.DomainModels;
 using CTWebAPI.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Results;
 using CTWebAPI.Controllers;
-using CTWebAPI.Models;
+using CTWebAPI.Models.DomainModels;
 using CTWebAPI.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -20,44 +20,44 @@ namespace CTWebAPI.Tests.Controllers
         }
 
         private FoodNutrientLogController _foodNutrientLogController;
-        private IEnumerable<FoodNutrientLog> _fakeFoodNutrientLog;
+        private IEnumerable<FoodNutrientRecord> _fakeFoodNutrientLog;
         private Mock<IUnitOfWork> _unitOfWork;
 
-        private IEnumerable<FoodNutrientLog> GetFoodNutrientLog()
+        private IEnumerable<FoodNutrientRecord> GetFoodNutrientLog()
         {
-            IEnumerable<FoodNutrientLog> foodNutrientLogs = new List<FoodNutrientLog>
+            IEnumerable<FoodNutrientRecord> foodNutrientLogs = new List<FoodNutrientRecord>
             {
-                new FoodNutrientLog
+                new FoodNutrientRecord
                 {
-                    NurtientLogID = 0,
+                    FoodNutrientRecordID = 0,
                     FoodID = 101,
                     NurtientID = 2,
                     Value = 10
                 },
-                new FoodNutrientLog
+                new FoodNutrientRecord
                 {
-                    NurtientLogID = 1,
+                    FoodNutrientRecordID = 1,
                     FoodID = 101,
                     NurtientID = 2,
                     Value = 10
                 },
-                new FoodNutrientLog
+                new FoodNutrientRecord
                 {
-                    NurtientLogID = 2,
+                    FoodNutrientRecordID = 2,
                     FoodID = 101,
                     NurtientID = 2,
                     Value = 10
                 },
-                new FoodNutrientLog
+                new FoodNutrientRecord
                 {
-                    NurtientLogID = 3,
+                    FoodNutrientRecordID = 3,
                     FoodID = 101,
                     NurtientID = 2,
                     Value = 10
                 },
-                new FoodNutrientLog
+                new FoodNutrientRecord
                 {
-                    NurtientLogID = 4,
+                    FoodNutrientRecordID = 4,
                     FoodID = 101,
                     NurtientID = 2,
                     Value = 10
@@ -70,15 +70,15 @@ namespace CTWebAPI.Tests.Controllers
         public void FoodNutrientLogController_Delete_DeletesFoodNutrientLog()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
-            var foodNutrientLogToDelete = new FoodNutrientLog
+            var foodNutrientLogToDelete = new FoodNutrientRecord
             {
-                NurtientLogID = 0,
+                FoodNutrientRecordID = 0,
                 FoodID = 101,
                 NurtientID = 2,
                 Value = 10
             };
 
-            _unitOfWork.Setup(x => x.FoodNutrientLogRepository.Delete(foodNutrientLogToDelete));
+            _unitOfWork.Setup(x => x.FoodNutrientRecordRepository.Delete(foodNutrientLogToDelete));
             _foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
 
             IHttpActionResult actionResult = _foodNutrientLogController.Delete(foodNutrientLogToDelete).Result;
@@ -92,7 +92,7 @@ namespace CTWebAPI.Tests.Controllers
         {
             _unitOfWork = new Mock<IUnitOfWork>();
 
-            _unitOfWork.Setup(x => x.FoodNutrientLogRepository.Delete(null));
+            _unitOfWork.Setup(x => x.FoodNutrientRecordRepository.Delete(null));
             _foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
 
             IHttpActionResult actionResult = _foodNutrientLogController.Delete(null).Result;
@@ -105,10 +105,10 @@ namespace CTWebAPI.Tests.Controllers
         public void FoodNutrientLogController_GetRange_ReturnsFoodNutrientLogsInRange()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
-            _unitOfWork.Setup(x => x.FoodNutrientLogRepository.GetRange(5)).Returns(_fakeFoodNutrientLog);
+            _unitOfWork.Setup(x => x.FoodNutrientRecordRepository.GetRange(5)).Returns(_fakeFoodNutrientLog);
             var foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
 
-            IEnumerable<FoodNutrientLog> foodNutrientLogs = foodNutrientLogController.GetRange(5);
+            IEnumerable<FoodNutrientRecord> foodNutrientLogs = foodNutrientLogController.GetRange(5);
             Assert.AreEqual(_fakeFoodNutrientLog.Count(), foodNutrientLogs.Count());
         }
 
@@ -116,10 +116,10 @@ namespace CTWebAPI.Tests.Controllers
         public void FoodNutrientLogController_Get_ReturnsAllFoodNutrientLogs()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
-            _unitOfWork.Setup(x => x.FoodNutrientLogRepository.Get()).Returns(_fakeFoodNutrientLog);
+            _unitOfWork.Setup(x => x.FoodNutrientRecordRepository.Get()).Returns(_fakeFoodNutrientLog);
             var foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
 
-            IEnumerable<FoodNutrientLog> foodNutrientLogs = foodNutrientLogController.Get();
+            IEnumerable<FoodNutrientRecord> foodNutrientLogs = foodNutrientLogController.Get();
             Assert.AreSame(_fakeFoodNutrientLog, foodNutrientLogs);
         }
 
@@ -127,18 +127,18 @@ namespace CTWebAPI.Tests.Controllers
         public void FoodNutrientLogController_Get_ReturnsCorrectFoodNutrientLog()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
-            var expectedFoodNutrientLog = new FoodNutrientLog
+            var expectedFoodNutrientLog = new FoodNutrientRecord
             {
-                NurtientLogID = 0,
+                FoodNutrientRecordID = 0,
                 FoodID = 101,
                 NurtientID = 2,
                 Value = 10
             };
-            _unitOfWork.Setup(x => x.FoodNutrientLogRepository.GetAsync(2)).ReturnsAsync(expectedFoodNutrientLog);
+            _unitOfWork.Setup(x => x.FoodNutrientRecordRepository.GetAsync(2)).ReturnsAsync(expectedFoodNutrientLog);
             _foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
 
             IHttpActionResult actionResult = _foodNutrientLogController.Get(2).Result;
-            var returnedFoodNutrientLog = actionResult as OkNegotiatedContentResult<FoodNutrientLog>;
+            var returnedFoodNutrientLog = actionResult as OkNegotiatedContentResult<FoodNutrientRecord>;
 
             Assert.IsNotNull(returnedFoodNutrientLog);
             Assert.AreSame(expectedFoodNutrientLog, returnedFoodNutrientLog.Content);
@@ -148,11 +148,11 @@ namespace CTWebAPI.Tests.Controllers
         public void FoodNutrientLogController_Get_ReturnsNotFound()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
-            _unitOfWork.Setup(x => x.FoodNutrientLogRepository.Get(2));
+            _unitOfWork.Setup(x => x.FoodNutrientRecordRepository.Get(2));
             _foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
 
             IHttpActionResult response = _foodNutrientLogController.Get(2).Result;
-            var returnedFoodNutrientLog = response as OkNegotiatedContentResult<FoodNutrientLog>;
+            var returnedFoodNutrientLog = response as OkNegotiatedContentResult<FoodNutrientRecord>;
 
             Assert.IsNull(returnedFoodNutrientLog); //If null somethings gone wrong
         }
@@ -160,19 +160,19 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void FoodNutrientLogController_Post_SuccessfulInsert()
         {
-            var createdFoodNutrientLog = new FoodNutrientLog
+            var createdFoodNutrientLog = new FoodNutrientRecord
             {
-                NurtientLogID = 1
+                FoodNutrientRecordID = 1
             };
             _unitOfWork = new Mock<IUnitOfWork>();
-            _unitOfWork.Setup(i => i.FoodNutrientLogRepository.Create(createdFoodNutrientLog));
+            _unitOfWork.Setup(i => i.FoodNutrientRecordRepository.Create(createdFoodNutrientLog));
 
             var foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
             IHttpActionResult response = foodNutrientLogController.Post(createdFoodNutrientLog).Result;
-            var result = response as CreatedNegotiatedContentResult<FoodNutrientLog>;
+            var result = response as CreatedNegotiatedContentResult<FoodNutrientRecord>;
 
             Assert.IsNotNull(result);
-            Assert.IsInstanceOf<FoodNutrientLog>(result.Content);
+            Assert.IsInstanceOf<FoodNutrientRecord>(result.Content);
             Assert.AreEqual(createdFoodNutrientLog, result.Content);
             Assert.IsNotNullOrEmpty(result.Location.ToString());
         }
@@ -181,11 +181,11 @@ namespace CTWebAPI.Tests.Controllers
         public void FoodNutrientLogController_Post_UnsuccessfulInsert()
         {
             _unitOfWork = new Mock<IUnitOfWork>();
-            _unitOfWork.Setup(i => i.FoodNutrientLogRepository.Create(null));
+            _unitOfWork.Setup(i => i.FoodNutrientRecordRepository.Create(null));
 
             var foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
             IHttpActionResult response = foodNutrientLogController.Post(null).Result;
-            var result = response as CreatedNegotiatedContentResult<FoodNutrientLog>;
+            var result = response as CreatedNegotiatedContentResult<FoodNutrientRecord>;
 
             Assert.IsNull(result);
         }
@@ -193,33 +193,33 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void FoodNutrientLogController_Put_SuccessfulUpdate()
         {
-            var currentFoodNutrientLog = new FoodNutrientLog
+            var currentFoodNutrientLog = new FoodNutrientRecord
             {
-                NurtientLogID = 2,
+                FoodNutrientRecordID = 2,
                 FoodID = 101,
                 NurtientID = 2,
                 Value = 10
             };
 
-            var updatedFoodNutrientLog = new FoodNutrientLog
+            var updatedFoodNutrientLog = new FoodNutrientRecord
             {
-                NurtientLogID = 2,
+                FoodNutrientRecordID = 2,
                 FoodID = 101,
                 NurtientID = 2,
                 Value = 10
             };
 
             _unitOfWork = new Mock<IUnitOfWork>();
-            _unitOfWork.Setup(i => i.FoodNutrientLogRepository.Get(2)).Returns(currentFoodNutrientLog);
-            _unitOfWork.Setup(i => i.FoodNutrientLogRepository.Update(updatedFoodNutrientLog));
+            _unitOfWork.Setup(i => i.FoodNutrientRecordRepository.Get(2)).Returns(currentFoodNutrientLog);
+            _unitOfWork.Setup(i => i.FoodNutrientRecordRepository.Update(updatedFoodNutrientLog));
 
             var foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
             IHttpActionResult response =
-                foodNutrientLogController.Put(updatedFoodNutrientLog.NurtientLogID, updatedFoodNutrientLog).Result;
-            var result = response as CreatedNegotiatedContentResult<FoodNutrientLog>;
+                foodNutrientLogController.Put(updatedFoodNutrientLog.FoodNutrientRecordID, updatedFoodNutrientLog).Result;
+            var result = response as CreatedNegotiatedContentResult<FoodNutrientRecord>;
 
             Assert.IsNotNull(result);
-            Assert.IsInstanceOf<FoodNutrientLog>(result.Content);
+            Assert.IsInstanceOf<FoodNutrientRecord>(result.Content);
             Assert.AreEqual(updatedFoodNutrientLog, result.Content);
             Assert.AreEqual(updatedFoodNutrientLog.Value, result.Content.Value);
             Assert.IsNotNullOrEmpty(result.Location.ToString());
@@ -228,30 +228,30 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void FoodNutrientLogController_Put_UnsuccessfulInsert_DifferentFoodNutrientLog()
         {
-            var currentFoodNutrientLog = new FoodNutrientLog
+            var currentFoodNutrientLog = new FoodNutrientRecord
             {
-                NurtientLogID = 3,
+                FoodNutrientRecordID = 3,
                 FoodID = 101,
                 NurtientID = 2,
                 Value = 10
             };
 
-            var updatedFoodNutrientLog = new FoodNutrientLog
+            var updatedFoodNutrientLog = new FoodNutrientRecord
             {
-                NurtientLogID = 2,
+                FoodNutrientRecordID = 2,
                 FoodID = 101,
                 NurtientID = 2,
                 Value = 10
             };
 
             _unitOfWork = new Mock<IUnitOfWork>();
-            _unitOfWork.Setup(i => i.FoodNutrientLogRepository.Get(2)).Returns(currentFoodNutrientLog);
-            _unitOfWork.Setup(i => i.FoodNutrientLogRepository.Update(updatedFoodNutrientLog));
+            _unitOfWork.Setup(i => i.FoodNutrientRecordRepository.Get(2)).Returns(currentFoodNutrientLog);
+            _unitOfWork.Setup(i => i.FoodNutrientRecordRepository.Update(updatedFoodNutrientLog));
 
             var foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
             IHttpActionResult response =
-                foodNutrientLogController.Put(updatedFoodNutrientLog.NurtientLogID, updatedFoodNutrientLog).Result;
-            var result = response as CreatedNegotiatedContentResult<FoodNutrientLog>;
+                foodNutrientLogController.Put(updatedFoodNutrientLog.FoodNutrientRecordID, updatedFoodNutrientLog).Result;
+            var result = response as CreatedNegotiatedContentResult<FoodNutrientRecord>;
 
             Assert.IsNull(result);
         }
@@ -259,22 +259,22 @@ namespace CTWebAPI.Tests.Controllers
         [Test]
         public void FoodNutrientLogController_Put_UnsuccessfulInsert_NoFoodNutrientLog()
         {
-            var updatedFoodNutrientLog = new FoodNutrientLog
+            var updatedFoodNutrientLog = new FoodNutrientRecord
             {
-                NurtientLogID = 2,
+                FoodNutrientRecordID = 2,
                 FoodID = 101,
                 NurtientID = 2,
                 Value = 10
             };
 
             _unitOfWork = new Mock<IUnitOfWork>();
-            _unitOfWork.Setup(i => i.FoodNutrientLogRepository.Get(2));
-            _unitOfWork.Setup(i => i.FoodNutrientLogRepository.Update(updatedFoodNutrientLog));
+            _unitOfWork.Setup(i => i.FoodNutrientRecordRepository.Get(2));
+            _unitOfWork.Setup(i => i.FoodNutrientRecordRepository.Update(updatedFoodNutrientLog));
 
             var foodNutrientLogController = new FoodNutrientLogController(_unitOfWork.Object);
             IHttpActionResult response =
-                foodNutrientLogController.Put(updatedFoodNutrientLog.NurtientLogID, updatedFoodNutrientLog).Result;
-            var result = response as CreatedNegotiatedContentResult<FoodNutrientLog>;
+                foodNutrientLogController.Put(updatedFoodNutrientLog.FoodNutrientRecordID, updatedFoodNutrientLog).Result;
+            var result = response as CreatedNegotiatedContentResult<FoodNutrientRecord>;
 
             Assert.IsNull(result);
         }

@@ -186,79 +186,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Activity.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
+    <Compile Include="Migrations\201409271159020_Initialisation.cs" />
+    <Compile Include="Migrations\201409271159020_Initialisation.Designer.cs">
+      <DependentUpon>201409271159020_Initialisation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ActivityLog.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
+    <Compile Include="Migrations\201409271223430_Added MetaData.cs" />
+    <Compile Include="Migrations\201409271223430_Added MetaData.Designer.cs">
+      <DependentUpon>201409271223430_Added MetaData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\CTModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CTModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CTModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CTModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CTModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CTModelV2.cs" />
-    <Compile Include="Models\Food.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodGroup.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodLog.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FoodNutrientLog.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Nutrient.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NutrientRDA.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\Activity.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\ActivityLog.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\CTModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CTModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\CTModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\CTModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CTModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\Food.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\FoodGroup.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\FoodLog.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\FoodNutrientLog.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\DomainModels\Activity.cs" />
+    <Compile Include="Models\DomainModels\ActivityLog.cs" />
+    <Compile Include="Models\DomainModels\Food.cs" />
+    <Compile Include="Models\DomainModels\FoodGroup.cs" />
+    <Compile Include="Models\DomainModels\FoodLog.cs" />
+    <Compile Include="Models\DomainModels\FoodNutrientRecord.cs" />
+    <Compile Include="Models\DomainModels\Nutrient.cs" />
+    <Compile Include="Models\DomainModels\NutrientRDA.cs" />
+    <Compile Include="Models\DomainModels\User.cs" />
     <Compile Include="Models\MetaData\ActivityLogMetadData.cs" />
     <Compile Include="Models\MetaData\ActivityMetaData.cs" />
     <Compile Include="Models\MetaData\FoodGroupMetaData.cs" />
@@ -268,33 +214,6 @@
     <Compile Include="Models\MetaData\NutrientMetaData.cs" />
     <Compile Include="Models\MetaData\NutrientRDAMetaData.cs" />
     <Compile Include="Models\MetaData\UserMetaData.cs" />
-    <Compile Include="Models\Old Model\Metric.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\MetricLogs.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\Nutrient.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Old Model\NutrientRDA.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PartialModels\Activity.cs" />
-    <Compile Include="Models\PartialModels\ActivityLog.cs" />
-    <Compile Include="Models\PartialModels\Food.cs" />
-    <Compile Include="Models\PartialModels\FoodGroup.cs" />
-    <Compile Include="Models\PartialModels\FoodLog.cs" />
-    <Compile Include="Models\PartialModels\FoodNutrientLog.cs" />
-    <Compile Include="Models\PartialModels\Nutrient.cs" />
-    <Compile Include="Models\PartialModels\NutrientRDA.cs" />
-    <Compile Include="Models\PartialModels\User.cs" />
-    <Compile Include="Models\Old Model\User.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>CTModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Ninject\NinjectResolver.cs" />
     <Compile Include="Ninject\NinjectScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -304,7 +223,7 @@
     <Compile Include="Repository\DataLayer\EntityFrameworkRepository.cs" />
     <Compile Include="Repository\FoodGroupRepository.cs" />
     <Compile Include="Repository\FoodLogRepository.cs" />
-    <Compile Include="Repository\FoodNutrientLogRepository.cs" />
+    <Compile Include="Repository\FoodNutrientRecordRepository.cs" />
     <Compile Include="Repository\FoodRepository.cs" />
     <Compile Include="Repository\Interfaces\IActivityLog.cs" />
     <Compile Include="Repository\Interfaces\IActivityRespository.cs" />
@@ -378,41 +297,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\Old Model\CTModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CTModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Old Model\CTModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CTModel.edmx</DependentUpon>
-      <LastGenOutput>CTModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Old Model\CTModel.edmx.diagram">
-      <DependentUpon>CTModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\CTModel.edmx.sql" />
-    <Content Include="Models\Old Model\CTModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CTModel.edmx</DependentUpon>
-      <LastGenOutput>CTModel.cs</LastGenOutput>
-    </Content>
-    <EntityDeploy Include="Models\CTModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CTModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\CTModel.edmx.diagram">
-      <DependentUpon>CTModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\CTModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CTModel.Context.cs</LastGenOutput>
-      <DependentUpon>CTModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\CTModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CTModel.cs</LastGenOutput>
-      <DependentUpon>CTModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -464,6 +348,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201409271159020_Initialisation.resx">
+      <DependentUpon>201409271159020_Initialisation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409271223430_Added MetaData.resx">
+      <DependentUpon>201409271223430_Added MetaData.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using CTWebAPI.Models;
+using CTWebAPI.Models.DomainModels;
 using CTWebAPI.Repository.Interfaces;
 
 namespace CTWebAPI.Controllers

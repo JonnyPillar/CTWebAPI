@@ -1,15 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
-using CTWebAPI.Models.DomainModels;
 
-namespace CTWebAPI.Models.MetaData
+namespace CTWebAPI.Models.DomainModels
 {
-    public class FoodLogMetaData
+    public class FoodNutrientRecord
     {
         [ScaffoldColumn(false)]
         [DataMember]
-        public int FoodLogID { get; set; }
+        public int FoodNutrientRecordID { get; set; }
 
         [Required]
         [DataMember]
@@ -18,22 +17,25 @@ namespace CTWebAPI.Models.MetaData
 
         [Required]
         [DataMember]
-        [Display(Name = "User ID")]
-        public int UserID { get; set; }
+        [Display(Name = "Nutrient ID")]
+        public int NurtientID { get; set; }
 
         [Required]
         [DataMember]
-        public decimal Quantity { get; set; }
+        public decimal Value { get; set; }
 
         [Required]
         [DataMember]
-        [Display(Name = "Created")]
         public DateTime CreationTimestamp { get; set; }
 
+        [Required]
         [DataMember]
-        public virtual Food tbl_foods { get; set; }
+        public DateTime LastUpdatedTimestamp { get; set; }
 
         [DataMember]
-        public virtual User tbl_users { get; set; }
+        public virtual Food Food { get; set; }
+
+        [DataMember]
+        public virtual Nutrient Nutrient { get; set; }
     }
 }

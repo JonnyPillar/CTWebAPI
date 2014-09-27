@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
-using CTWebAPI.Models.DomainModels;
 
-namespace CTWebAPI.Models.MetaData
+namespace CTWebAPI.Models.DomainModels
 {
-    public class ActivityMetaData
+    public class Activity
     {
+        public Activity()
+        {
+            ActivityLogs = new HashSet<ActivityLog>();
+        }
+
         [ScaffoldColumn(false)]
         [DataMember]
         public int ActivityID { get; set; }
@@ -28,8 +30,16 @@ namespace CTWebAPI.Models.MetaData
         [DataMember]
         public string ImageUrl { get; set; }
 
+        [Required]
+        [DataMember]
+        public DateTime CreationTimestamp { get; set; }
+
+        [Required]
+        [DataMember]
+        public DateTime LastUpdatedTimestamp { get; set; }
+
         [IgnoreDataMember]
         [ScaffoldColumn(false)]
-        public virtual ICollection<ActivityLog> tbl_activity_logs { get; set; }
+        public virtual ICollection<ActivityLog> ActivityLogs { get; set; }
     }
 }

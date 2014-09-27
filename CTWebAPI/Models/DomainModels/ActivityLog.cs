@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
-using CTWebAPI.Models.DomainModels;
 
-namespace CTWebAPI.Models.MetaData
+namespace CTWebAPI.Models.DomainModels
 {
-    public class ActivityLogMetadData
+    public class ActivityLog
     {
         [ScaffoldColumn(false)]
         [DataMember]
@@ -53,12 +52,20 @@ namespace CTWebAPI.Models.MetaData
         [Display(Name = "File URL")]
         public string FileURL { get; set; }
 
-        [ScaffoldColumn(false)]
+        [Required]
         [DataMember]
-        public virtual Activity tbl_activities { get; set; }
+        public DateTime CreationTimestamp { get; set; }
+
+        [Required]
+        [DataMember]
+        public DateTime LastUpdatedTimestamp { get; set; }
 
         [ScaffoldColumn(false)]
         [DataMember]
-        public virtual User tbl_users { get; set; }
+        public virtual Activity Activity { get; set; }
+
+        [ScaffoldColumn(false)]
+        [DataMember]
+        public virtual User User { get; set; }
     }
 }

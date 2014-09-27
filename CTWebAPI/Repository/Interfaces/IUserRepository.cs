@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CTWebAPI.Models;
+using CTWebAPI.Models.DomainModels;
 
 namespace CTWebAPI.Repository.Interfaces
 {

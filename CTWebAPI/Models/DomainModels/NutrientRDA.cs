@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
-using CTWebAPI.Models.DomainModels;
 
-namespace CTWebAPI.Models.MetaData
+namespace CTWebAPI.Models.DomainModels
 {
-    public class NutrientRDAMetaData
+    public class NutrientRDA
     {
         [ScaffoldColumn(false)]
         [DataMember]
@@ -42,7 +38,15 @@ namespace CTWebAPI.Models.MetaData
         [Display(Name = "Unit Type")]
         public int UnitType { get; set; }
 
+        [Required]
         [DataMember]
-        public virtual Nutrient tbl_nutrients { get; set; }
+        public DateTime CreationTimestamp { get; set; }
+        
+        [Required]
+        [DataMember]
+        public DateTime LastUpdatedTimestamp { get; set; }
+
+        [DataMember]
+        public virtual Nutrient Nutrient { get; set; }
     }
 }

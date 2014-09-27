@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
+using CTWebAPI.Models.DomainModels;
 
 namespace CTWebAPI.Models.MetaData
 {
@@ -30,7 +31,7 @@ namespace CTWebAPI.Models.MetaData
 
         [ScaffoldColumn(false)]
         [IgnoreDataMember]
-        public virtual ICollection<FoodNutrientLog> tbl_food_nutrition_logs { get; set; }
+        public virtual ICollection<FoodNutrientRecord> tbl_food_nutrition_logs { get; set; }
 
         [ScaffoldColumn(false)]
         [DataMember]

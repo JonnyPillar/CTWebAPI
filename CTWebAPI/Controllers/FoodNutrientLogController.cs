@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using CTWebAPI.Models;
+using CTWebAPI.Models.DomainModels;
 using CTWebAPI.Repository.Interfaces;
 
 namespace CTWebAPI.Controllers
@@ -17,15 +17,15 @@ namespace CTWebAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<FoodNutrientLog> Get()
+        public IEnumerable<FoodNutrientRecord> Get()
         {
-            return _unitOfWork.FoodNutrientLogRepository.Get();
+            return _unitOfWork.FoodNutrientRecordRepository.Get();
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> Get(int id)
         {
-            FoodNutrientLog foodNutrientLog = await _unitOfWork.FoodNutrientLogRepository.GetAsync(id);
+            FoodNutrientRecord foodNutrientLog = await _unitOfWork.FoodNutrientRecordRepository.GetAsync(id);
 
             if (foodNutrientLog == null)
             {
@@ -37,23 +37,23 @@ namespace CTWebAPI.Controllers
 
 
         [HttpGet]
-        public IEnumerable<FoodNutrientLog> GetRange(int quantity)
+        public IEnumerable<FoodNutrientRecord> GetRange(int quantity)
         {
-            return _unitOfWork.FoodNutrientLogRepository.GetRange(quantity);
+            return _unitOfWork.FoodNutrientRecordRepository.GetRange(quantity);
         }
 
         [HttpPost]
-        public async Task<IHttpActionResult> Post([FromBody] FoodNutrientLog foodNutrientLog)
+        public async Task<IHttpActionResult> Post([FromBody] FoodNutrientRecord foodNutrientLog)
         {
             try
             {
                 if (foodNutrientLog == null) return BadRequest("Invalid Model");
-                FoodNutrientLog existingFoodNutrientLog =
-                    _unitOfWork.FoodNutrientLogRepository.Get(foodNutrientLog.NurtientLogID);
+                FoodNutrientRecord existingFoodNutrientLog =
+                    _unitOfWork.FoodNutrientRecordRepository.Get(foodNutrientLog.FoodNutrientRecordID);
                 if (existingFoodNutrientLog != null) return BadRequest("FoodNutrientLog Already Exists");
                 if (ModelState.IsValid)
                 {
-                    _unitOfWork.FoodNutrientLogRepository.Create(foodNutrientLog);
+                    _unitOfWork.FoodNutrientRecordRepository.Create(foodNutrientLog);
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", foodNutrientLog);
                 }
@@ -66,18 +66,18 @@ namespace CTWebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IHttpActionResult> Put(int id, [FromBody] FoodNutrientLog foodNutrientLog)
+        public async Task<IHttpActionResult> Put(int id, [FromBody] FoodNutrientRecord foodNutrientLog)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    FoodNutrientLog originalFoodNutrientLog = _unitOfWork.FoodNutrientLogRepository.Get(id);
-                    if (originalFoodNutrientLog == null || originalFoodNutrientLog.NurtientLogID != id)
+                    FoodNutrientRecord originalFoodNutrientLog = _unitOfWork.FoodNutrientRecordRepository.Get(id);
+                    if (originalFoodNutrientLog == null || originalFoodNutrientLog.FoodNutrientRecordID != id)
                     {
                         return NotFound();
                     }
-                    _unitOfWork.FoodNutrientLogRepository.Update(foodNutrientLog);
+                    _unitOfWork.FoodNutrientRecordRepository.Update(foodNutrientLog);
                     await _unitOfWork.SaveChangesAsync();
                     return Created("Http://www.exmaple.com", foodNutrientLog);
                 }
@@ -90,12 +90,12 @@ namespace CTWebAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete([FromBody] FoodNutrientLog foodNutrientLog)
+        public async Task<IHttpActionResult> Delete([FromBody] FoodNutrientRecord foodNutrientLog)
         {
             try
             {
                 if (foodNutrientLog == null) return BadRequest("FoodNutrientLog Is Null");
-                _unitOfWork.FoodNutrientLogRepository.Delete(foodNutrientLog);
+                _unitOfWork.FoodNutrientRecordRepository.Delete(foodNutrientLog);
                 await _unitOfWork.SaveChangesAsync();
                 return Ok("FoodNutrientLog Deleted Successfully");
             }

@@ -1,24 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
-using CTWebAPI.Models.DomainModels;
 
-namespace CTWebAPI.Models.MetaData
+namespace CTWebAPI.Models.DomainModels
 {
-    public class FoodMetaData
+    public class Food
     {
+        public Food()
+        {
+            FoodLogs = new HashSet<FoodLog>();
+            FoodNutrientLogs = new HashSet<FoodNutrientRecord>();
+        }
+
         [ScaffoldColumn(false)]
         [DataMember]
         public int FoodID { get; set; }
-
-        [Display(Name = "Source ID")]
-        [DataMember]
-        public int SourceID { get; set; }
-
-        [IgnoreDataMember]
-        [ScaffoldColumn(false)]
-        //TODO Remove
-        public int? ParentID { get; set; }
 
         [Required]
         [DataMember]
@@ -38,16 +35,24 @@ namespace CTWebAPI.Models.MetaData
         [DataMember]
         public string ManufactureName { get; set; }
 
-        [IgnoreDataMember]
-        [ScaffoldColumn(false)]
-        public virtual FoodGroup tbl_food_groups { get; set; }
+        [Required]
+        [DataMember]
+        public DateTime CreationTimestamp { get; set; }
+
+        [Required]
+        [DataMember]
+        public DateTime LastUpdatedTimestamp { get; set; }
 
         [IgnoreDataMember]
         [ScaffoldColumn(false)]
-        public virtual ICollection<FoodLog> tbl_food_logs { get; set; }
+        public virtual FoodGroup FoodGroup { get; set; }
 
         [IgnoreDataMember]
         [ScaffoldColumn(false)]
-        public virtual ICollection<FoodNutrientRecord> tbl_food_nutrition_logs { get; set; }
+        public virtual ICollection<FoodLog> FoodLogs { get; set; }
+
+        [IgnoreDataMember]
+        [ScaffoldColumn(false)]
+        public virtual ICollection<FoodNutrientRecord> FoodNutrientLogs { get; set; }
     }
 }

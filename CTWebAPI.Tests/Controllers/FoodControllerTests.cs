@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using CTWebAPI.Controllers;
 using CTWebAPI.Models;
+using CTWebAPI.Models.DomainModels;
 using CTWebAPI.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -30,7 +31,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Food
                 {
                     FoodID = 0,
-                    SourceID = 0,
                     GroupID = 1,
                     Name = "Food 0",
                     Description = "",
@@ -39,7 +39,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Food
                 {
                     FoodID = 1,
-                    SourceID = 1,
                     GroupID = 1,
                     Name = "Food 1",
                     Description = "",
@@ -48,7 +47,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Food
                 {
                     FoodID = 2,
-                    SourceID = 2,
                     GroupID = 2,
                     Name = "Food 2",
                     Description = "",
@@ -57,7 +55,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Food
                 {
                     FoodID = 3,
-                    SourceID = 3,
                     GroupID = 3,
                     Name = "Food 3",
                     Description = "",
@@ -66,7 +63,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Food
                 {
                     FoodID = 4,
-                    SourceID = 4,
                     GroupID = 3,
                     Name = "Food 4",
                     Description = "",
@@ -83,7 +79,6 @@ namespace CTWebAPI.Tests.Controllers
             var foodToDelete = new Food
             {
                 FoodID = 0,
-                SourceID = 0,
                 GroupID = 1,
                 Name = "Food 0",
                 Description = "",
@@ -142,7 +137,6 @@ namespace CTWebAPI.Tests.Controllers
             var expectedFood = new Food
             {
                 FoodID = 0,
-                SourceID = 0,
                 GroupID = 1,
                 Name = "Food 0",
                 Description = "",
@@ -177,7 +171,6 @@ namespace CTWebAPI.Tests.Controllers
             var createdFood = new Food
             {
                 FoodID = 1,
-                SourceID = 0,
                 GroupID = 1,
                 Name = "Food 0",
                 Description = "",
@@ -216,7 +209,6 @@ namespace CTWebAPI.Tests.Controllers
             {
                 FoodID = 2,
                 Name = "Food One",
-                SourceID = 0,
                 GroupID = 1,
                 Description = "",
                 ManufactureName = ""
@@ -226,7 +218,6 @@ namespace CTWebAPI.Tests.Controllers
             {
                 FoodID = 2,
                 Name = "Food One",
-                SourceID = 0,
                 GroupID = 1,
                 Description = "",
                 ManufactureName = ""
@@ -254,7 +245,6 @@ namespace CTWebAPI.Tests.Controllers
             {
                 FoodID = 3,
                 Name = "Food One",
-                SourceID = 0,
                 GroupID = 1,
                 Description = "",
                 ManufactureName = ""
@@ -264,7 +254,6 @@ namespace CTWebAPI.Tests.Controllers
             {
                 FoodID = 2,
                 Name = "Food One",
-                SourceID = 0,
                 GroupID = 1,
                 Description = "",
                 ManufactureName = ""
@@ -288,7 +277,6 @@ namespace CTWebAPI.Tests.Controllers
             {
                 FoodID = 2,
                 Name = "Food One",
-                SourceID = 0,
                 GroupID = 1,
                 Description = "",
                 ManufactureName = ""

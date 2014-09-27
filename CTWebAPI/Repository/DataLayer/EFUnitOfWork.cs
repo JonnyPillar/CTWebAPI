@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Threading.Tasks;
 using CTWebAPI.Models;
+using CTWebAPI.Models.DomainModels;
 using CTWebAPI.Repository.Interfaces;
 
 namespace CTWebAPI.Repository.DataLayer
@@ -14,7 +15,7 @@ namespace CTWebAPI.Repository.DataLayer
         private bool _disposed;
         private IRepository<FoodGroup, int> _foodGroupRepository;
         private IRepository<FoodLog, int> _foodLogRepository;
-        private IRepository<FoodNutrientLog, int> _foodNutrientLogRepository;
+        private IRepository<FoodNutrientRecord, int> _foodNutrientRecordRepository;
         private IRepository<Food, int> _foodRepository;
         private IRepository<NutrientRDA, int> _nutrientRDARepository;
         private IRepository<Nutrient, int> _nutrientRepository;
@@ -22,7 +23,7 @@ namespace CTWebAPI.Repository.DataLayer
 
         public EFUnitOfWork()
         {
-            _dbContext = new DbContext("CTEntities");
+            _dbContext = new DbContext("CTModelV2");
         }
 
         public IRepository<User, int> UserRepository
@@ -122,15 +123,15 @@ namespace CTWebAPI.Repository.DataLayer
             }
         }
 
-        public IRepository<FoodNutrientLog, int> FoodNutrientLogRepository
+        public IRepository<FoodNutrientRecord, int> FoodNutrientRecordRepository
         {
             get
             {
-                if (_foodNutrientLogRepository == null)
+                if (_foodNutrientRecordRepository == null)
                 {
-                    _foodNutrientLogRepository = new FoodNutrientLogRepository(_dbContext);
+                    _foodNutrientRecordRepository = new FoodNutrientRecordRepository(_dbContext);
                 }
-                return _foodNutrientLogRepository;
+                return _foodNutrientRecordRepository;
             }
         }
 

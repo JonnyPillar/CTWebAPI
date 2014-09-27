@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using CTWebAPI.Controllers;
 using CTWebAPI.Models;
+using CTWebAPI.Models.DomainModels;
 using CTWebAPI.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -30,7 +31,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Nutrient
                 {
                     NutrientID = 0,
-                    SourceID = 0,
                     Name = "Nutrient 0",
                     DecimalRounding = 0,
                     UnitType = 0
@@ -38,7 +38,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Nutrient
                 {
                     NutrientID = 1,
-                    SourceID = 1,
                     Name = "Nutrient 1",
                     DecimalRounding = 0,
                     UnitType = 0
@@ -46,7 +45,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Nutrient
                 {
                     NutrientID = 2,
-                    SourceID = 2,
                     Name = "Nutrient 2",
                     DecimalRounding = 0,
                     UnitType = 0
@@ -54,7 +52,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Nutrient
                 {
                     NutrientID = 3,
-                    SourceID = 3,
                     Name = "Nutrient 3",
                     DecimalRounding = 0,
                     UnitType = 0
@@ -62,7 +59,6 @@ namespace CTWebAPI.Tests.Controllers
                 new Nutrient
                 {
                     NutrientID = 4,
-                    SourceID = 4,
                     Name = "Nutrient 4",
                     DecimalRounding = 0,
                     UnitType = 0
@@ -78,7 +74,6 @@ namespace CTWebAPI.Tests.Controllers
             var nutrientToDelete = new Nutrient
             {
                 NutrientID = 0,
-                SourceID = 0,
                 Name = "Nutrient 0",
                 DecimalRounding = 0,
                 UnitType = 0
@@ -136,7 +131,6 @@ namespace CTWebAPI.Tests.Controllers
             var expectedNutrient = new Nutrient
             {
                 NutrientID = 0,
-                SourceID = 0,
                 Name = "Nutrient 0",
                 DecimalRounding = 0,
                 UnitType = 0
@@ -169,7 +163,6 @@ namespace CTWebAPI.Tests.Controllers
         {
             var createdNutrient = new Nutrient
             {
-                SourceID = 0,
                 Name = "Nutrient 0",
                 DecimalRounding = 0,
                 UnitType = 0
@@ -206,7 +199,6 @@ namespace CTWebAPI.Tests.Controllers
             var currentNutrient = new Nutrient
             {
                 NutrientID = 2,
-                SourceID = 0,
                 Name = "Nutrient 0",
                 DecimalRounding = 0,
                 UnitType = 0
@@ -215,7 +207,6 @@ namespace CTWebAPI.Tests.Controllers
             var updatedNutrient = new Nutrient
             {
                 NutrientID = 2,
-                SourceID = 0,
                 Name = "Nutrient 0",
                 DecimalRounding = 0,
                 UnitType = 0
@@ -242,7 +233,6 @@ namespace CTWebAPI.Tests.Controllers
             var currentNutrient = new Nutrient
             {
                 NutrientID = 3,
-                SourceID = 0,
                 Name = "Nutrient 0",
                 DecimalRounding = 0,
                 UnitType = 0
@@ -251,7 +241,6 @@ namespace CTWebAPI.Tests.Controllers
             var updatedNutrient = new Nutrient
             {
                 NutrientID = 2,
-                SourceID = 0,
                 Name = "Nutrient 0",
                 DecimalRounding = 0,
                 UnitType = 0
@@ -274,7 +263,6 @@ namespace CTWebAPI.Tests.Controllers
             var updatedNutrient = new Nutrient
             {
                 NutrientID = 2,
-                SourceID = 0,
                 Name = "Nutrient 0",
                 DecimalRounding = 0,
                 UnitType = 0

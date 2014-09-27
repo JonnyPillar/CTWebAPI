@@ -2,15 +2,35 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
-using CTWebAPI.Models.DomainModels;
 
-namespace CTWebAPI.Models.MetaData
+namespace CTWebAPI.Models.DomainModels
 {
-    public class UserMetaData
+    public class User
     {
+        public User()
+        {
+            ActivityLogs = new HashSet<ActivityLog>();
+            FoodLogs = new HashSet<FoodLog>();
+        }
+
         [ScaffoldColumn(false)]
         [DataMember]
         public int UserID { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        [DataMember]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        [DataMember]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Email Address")]
+        [DataMember]
+        public string EmailAddress { get; set; }
 
         [Required]
         [Display(Name = "Date Of Birth")]
@@ -33,24 +53,22 @@ namespace CTWebAPI.Models.MetaData
         [DataMember]
         public bool Admin { get; set; }
 
+        [Required]
         [ScaffoldColumn(false)]
         [DataMember]
         public DateTime CreationTimestamp { get; set; }
 
+        [Required]
         [ScaffoldColumn(false)]
         [DataMember]
-        public int ActivityLevelType { get; set; }
+        public DateTime LastUpdatedTimestamp { get; set; }
 
         [ScaffoldColumn(false)]
         [DataMember]
-        public int Personality { get; set; }
+        public virtual ICollection<ActivityLog> ActivityLogs { get; set; }
 
         [ScaffoldColumn(false)]
         [DataMember]
-        public virtual ICollection<ActivityLog> tbl_activity_logs { get; set; }
-
-        [ScaffoldColumn(false)]
-        [DataMember]
-        public virtual ICollection<FoodLog> tbl_food_logs { get; set; }
+        public virtual ICollection<FoodLog> FoodLogs { get; set; }
     }
 }

@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C7FB46
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTWebAPI.Domain.Services", "CTWebAPI.Domain.Services\CTWebAPI.Domain.Services.csproj", "{53B63BF0-600B-488C-9F31-5461560996A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTWebAPI.Domain.Data", "CTWebAPI.Domain.Data\CTWebAPI.Domain.Data.csproj", "{05A342A9-A1F1-473A-A8DF-1316C5E408BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +38,14 @@ Global
 		{281703DA-93CE-4AE5-AD2A-B7060149EF0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{281703DA-93CE-4AE5-AD2A-B7060149EF0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{281703DA-93CE-4AE5-AD2A-B7060149EF0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53B63BF0-600B-488C-9F31-5461560996A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53B63BF0-600B-488C-9F31-5461560996A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53B63BF0-600B-488C-9F31-5461560996A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53B63BF0-600B-488C-9F31-5461560996A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05A342A9-A1F1-473A-A8DF-1316C5E408BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05A342A9-A1F1-473A-A8DF-1316C5E408BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05A342A9-A1F1-473A-A8DF-1316C5E408BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05A342A9-A1F1-473A-A8DF-1316C5E408BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

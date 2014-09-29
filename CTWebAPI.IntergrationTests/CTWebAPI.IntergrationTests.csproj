@@ -60,9 +60,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CTWebAPI.Domain.Services\CTWebAPI.Domain.Services.csproj">
+      <Project>{53B63BF0-600B-488C-9F31-5461560996A4}</Project>
+      <Name>CTWebAPI.Domain.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CTWebAPI\CTWebAPI.csproj">
       <Project>{9f4011a2-2d96-4d0c-a5a7-64413293a018}</Project>
       <Name>CTWebAPI</Name>

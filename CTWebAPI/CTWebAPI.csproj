@@ -199,41 +199,9 @@
       <DependentUpon>201409271311441_Removing Required Field From User Table For Creation and LastUpdated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\CTModelV2.cs" />
-    <Compile Include="Models\DomainModels\Activity.cs" />
-    <Compile Include="Models\DomainModels\ActivityLog.cs" />
-    <Compile Include="Models\DomainModels\Food.cs" />
-    <Compile Include="Models\DomainModels\FoodGroup.cs" />
-    <Compile Include="Models\DomainModels\FoodLog.cs" />
-    <Compile Include="Models\DomainModels\FoodNutrientRecord.cs" />
-    <Compile Include="Models\DomainModels\Nutrient.cs" />
-    <Compile Include="Models\DomainModels\NutrientRDA.cs" />
-    <Compile Include="Models\DomainModels\User.cs" />
     <Compile Include="Ninject\NinjectResolver.cs" />
     <Compile Include="Ninject\NinjectScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\ActivityLogRepository.cs" />
-    <Compile Include="Repository\ActivityRespository.cs" />
-    <Compile Include="Repository\DataLayer\EFUnitOfWork.cs" />
-    <Compile Include="Repository\DataLayer\EntityFrameworkRepository.cs" />
-    <Compile Include="Repository\FoodGroupRepository.cs" />
-    <Compile Include="Repository\FoodLogRepository.cs" />
-    <Compile Include="Repository\FoodNutrientRecordRepository.cs" />
-    <Compile Include="Repository\FoodRepository.cs" />
-    <Compile Include="Repository\Interfaces\IActivityLog.cs" />
-    <Compile Include="Repository\Interfaces\IActivityRespository.cs" />
-    <Compile Include="Repository\Interfaces\IFoodGroupRepository.cs" />
-    <Compile Include="Repository\Interfaces\IFoodLogRepository.cs" />
-    <Compile Include="Repository\Interfaces\IFoodNutrientLog.cs" />
-    <Compile Include="Repository\Interfaces\IFoodRepository.cs" />
-    <Compile Include="Repository\Interfaces\INutrientRDARepository.cs" />
-    <Compile Include="Repository\Interfaces\INutrientRepository.cs" />
-    <Compile Include="Repository\Interfaces\IRepository.cs" />
-    <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Repository\Interfaces\IUserRepository.cs" />
-    <Compile Include="Repository\NutrientRDARespository.cs" />
-    <Compile Include="Repository\NutrientRepository.cs" />
-    <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -354,6 +322,16 @@
     <EmbeddedResource Include="Migrations\201409271311441_Removing Required Field From User Table For Creation and LastUpdated.resx">
       <DependentUpon>201409271311441_Removing Required Field From User Table For Creation and LastUpdated.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CTWebAPI.Domain.Data\CTWebAPI.Domain.Data.csproj">
+      <Project>{05A342A9-A1F1-473A-A8DF-1316C5E408BB}</Project>
+      <Name>CTWebAPI.Domain.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CTWebAPI.Domain.Services\CTWebAPI.Domain.Services.csproj">
+      <Project>{53B63BF0-600B-488C-9F31-5461560996A4}</Project>
+      <Name>CTWebAPI.Domain.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

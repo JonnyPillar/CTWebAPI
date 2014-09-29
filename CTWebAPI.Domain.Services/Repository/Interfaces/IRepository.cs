@@ -11,6 +11,7 @@ namespace CTWebAPI.Domain.Services.Repository.Interfaces
         TEntity Get(TKey id);
         Task<TEntity> GetAsync(TKey id);
         IEnumerable<TEntity> GetRange(int quantity);
+        IEnumerable<TEntity> GetRange(int page, int quantity);
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
         void Create(TEntity entity);

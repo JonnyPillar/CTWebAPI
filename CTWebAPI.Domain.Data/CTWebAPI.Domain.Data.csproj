@@ -49,9 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\APIContracts\FoodGroup\FoodGroupPostModel.cs" />
+    <Compile Include="Models\APIContracts\FoodGroup\FoodGroupPutModel.cs" />
+    <Compile Include="Models\APIContracts\Food\FoodPostModel.cs" />
+    <Compile Include="Models\APIContracts\Food\FoodPutModel.cs" />
     <Compile Include="Models\APIContracts\User\UserPostModel.cs" />
     <Compile Include="Models\APIContracts\User\UserPutModel.cs" />
-    <Compile Include="Models\CTModelV2.cs" />
+    <Compile Include="Models\DomainModels\CTModelV2.cs" />
     <Compile Include="Models\DomainModels\Activity.cs" />
     <Compile Include="Models\DomainModels\ActivityLog.cs" />
     <Compile Include="Models\DomainModels\Food.cs" />

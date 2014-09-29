@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201409271311441_Removing Required Field From User Table For Creation and LastUpdated.Designer.cs">
       <DependentUpon>201409271311441_Removing Required Field From User Table For Creation and LastUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409291930049_Updating Foreign Keys.cs" />
+    <Compile Include="Migrations\201409291930049_Updating Foreign Keys.Designer.cs">
+      <DependentUpon>201409291930049_Updating Foreign Keys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Ninject\NinjectResolver.cs" />
     <Compile Include="Ninject\NinjectScope.cs" />
@@ -322,6 +326,9 @@
     <EmbeddedResource Include="Migrations\201409271311441_Removing Required Field From User Table For Creation and LastUpdated.resx">
       <DependentUpon>201409271311441_Removing Required Field From User Table For Creation and LastUpdated.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409291930049_Updating Foreign Keys.resx">
+      <DependentUpon>201409291930049_Updating Foreign Keys.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CTWebAPI.Domain.Data\CTWebAPI.Domain.Data.csproj">
@@ -329,7 +336,7 @@
       <Name>CTWebAPI.Domain.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\CTWebAPI.Domain.Services\CTWebAPI.Domain.Services.csproj">
-      <Project>{53B63BF0-600B-488C-9F31-5461560996A4}</Project>
+      <Project>{53b63bf0-600b-488c-9f31-5461560996a4}</Project>
       <Name>CTWebAPI.Domain.Services</Name>
     </ProjectReference>
   </ItemGroup>

@@ -22,6 +22,11 @@ namespace CTWebAPI.Domain.Data.Models.DomainModels
             DOB = userModel.DOB;
             Gender = Convert.ToBoolean(userModel.Gender);
             //TODO Password
+            CreationTimestamp = DateTime.UtcNow;
+            LastUpdatedTimestamp = DateTime.UtcNow;
+
+            ActivityLogs = new HashSet<ActivityLog>();
+            FoodLogs = new HashSet<FoodLog>();
         }
 
         public User(UserPutModel userModel)
@@ -33,8 +38,14 @@ namespace CTWebAPI.Domain.Data.Models.DomainModels
             DOB = userModel.DOB;
             Gender = Convert.ToBoolean(userModel.Gender);
             //TODO Password
+            CreationTimestamp = DateTime.UtcNow;
+            LastUpdatedTimestamp = DateTime.UtcNow;
+
+            ActivityLogs = new HashSet<ActivityLog>();
+            FoodLogs = new HashSet<FoodLog>();
         }
 
+        [Key]
         [ScaffoldColumn(false)]
         [DataMember]
         public int UserID { get; set; }
@@ -77,10 +88,12 @@ namespace CTWebAPI.Domain.Data.Models.DomainModels
 
         [ScaffoldColumn(false)]
         [DataMember]
+        [Required]
         public DateTime CreationTimestamp { get; set; }
 
         [ScaffoldColumn(false)]
         [DataMember]
+        [Required]
         public DateTime LastUpdatedTimestamp { get; set; }
 
         [ScaffoldColumn(false)]

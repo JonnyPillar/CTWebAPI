@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using CTWebAPI.Domain.Data.Models.APIContracts.Food;
 using CTWebAPI.Domain.Data.Models.DomainModels;
 using CTWebAPI.Domain.Services.Repository.Interfaces;
 
@@ -41,19 +42,28 @@ namespace CTWebAPI.Controllers
             return _unitOfWork.FoodRepository.GetRange(quantity);
         }
 
+        [HttpGet]
+        public IEnumerable<Food> GetRange(int page, int quantity)
+        {
+            return _unitOfWork.FoodRepository.GetRange(page, quantity);
+        }
+
         [HttpPost]
-        public async Task<IHttpActionResult> Post([FromBody] Food food)
+        public async Task<IHttpActionResult> Post([FromBody] FoodPostModel food)
         {
             try
             {
-                if (food == null) return BadRequest("Invalid Model");
-                Food existingFood = _unitOfWork.FoodRepository.Get(food.FoodID);
-                if (existingFood != null) return BadRequest("User Already Exists");
                 if (ModelState.IsValid)
                 {
-                    _unitOfWork.FoodRepository.Create(food);
+                    if (food == null) return BadRequest("Invalid Model");
+                    bool foodExists = _unitOfWork.FoodRepository.Exists(x => x.Name.Equals(food.Name));
+                    if (foodExists) return BadRequest("Food Item Already Exists");
+
+                    var newFoodItem = new Food(food);
+
+                    _unitOfWork.FoodRepository.Create(newFoodItem);
                     await _unitOfWork.SaveChangesAsync();
-                    return Created("Http://www.exmaple.com", food);
+                    return Created("Http://www.exmaple.com", newFoodItem);
                 }
                 return BadRequest("Invalid Model");
             }
@@ -64,7 +74,7 @@ namespace CTWebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IHttpActionResult> Put(int id, [FromBody] Food food)
+        public async Task<IHttpActionResult> Put(int id, [FromBody] FoodPutModel food)
         {
             try
             {
@@ -75,9 +85,12 @@ namespace CTWebAPI.Controllers
                     {
                         return NotFound();
                     }
-                    _unitOfWork.FoodRepository.Update(id, food);
+
+                    var updatedFoodItem = new Food(food);
+
+                    _unitOfWork.FoodRepository.Update(id, updatedFoodItem);
                     await _unitOfWork.SaveChangesAsync();
-                    return Created("Http://www.exmaple.com", food);
+                    return Created("Http://www.exmaple.com", updatedFoodItem);
                 }
                 return BadRequest("Invalid Model");
             }
@@ -92,10 +105,10 @@ namespace CTWebAPI.Controllers
         {
             try
             {
-                if (food == null) return BadRequest("User Is Null");
+                if (food == null) return BadRequest("ID Is Null");
                 _unitOfWork.FoodRepository.Delete(food);
                 await _unitOfWork.SaveChangesAsync();
-                return Ok("User Deleted Successfully");
+                return Ok("Food Deleted Successfully");
             }
             catch (Exception ex)
             {

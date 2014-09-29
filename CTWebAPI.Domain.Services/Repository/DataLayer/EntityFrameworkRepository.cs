@@ -40,9 +40,15 @@ namespace CTWebAPI.Domain.Services.Repository.DataLayer
             return temp.Take(quantity);
         }
 
+        public IEnumerable<TEntity> GetRange(int page, int quantity)
+        {
+            int startIndex = page*quantity;
+            return _dbContext.Set<TEntity>().Skip(startIndex).Take(quantity);
+        }
+
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return Queryable.Where(_dbContext.Set<TEntity>(), predicate);
+            return _dbContext.Set<TEntity>().Where(predicate);
         }
 
         public void Create(TEntity entity)
@@ -55,13 +61,13 @@ namespace CTWebAPI.Domain.Services.Repository.DataLayer
         {
             if (entity == null) throw new ArgumentNullException("entity");
 
-            var currentEntity = DbContext.Set<TEntity>().Find(key);
+            TEntity currentEntity = DbContext.Set<TEntity>().Find(key);
             DbContext.Entry(currentEntity).CurrentValues.SetValues(entity);
         }
 
         public bool Exists(Expression<Func<TEntity, bool>> predicate)
         {
-            var result = Queryable.Where(_dbContext.Set<TEntity>(), predicate);
+            IQueryable<TEntity> result = _dbContext.Set<TEntity>().Where(predicate);
             return result.Any();
         }
 
